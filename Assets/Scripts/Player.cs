@@ -2,21 +2,24 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-    public float speed, jumpForce, speedBullet;
+    public float speed, jumpForce, speedBulletL, speedBulletR;
     public Transform groundCheck, gun;
     public LayerMask ground;
     public GameObject bullet;
     Rigidbody2D playerRb;
+    Transform playerTr;
     float direction;
-    bool grounded;
+    bool grounded, leftSide;
 
     void Start () {
         playerRb = GetComponent<Rigidbody2D>();
+        playerTr = GetComponent<Transform>();
 	}
 	
 	void Update () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f,ground);
         Jump();
+		Shoot();
 	}
 
     void FixedUpdate(){
@@ -26,6 +29,14 @@ public class Player : MonoBehaviour {
     void Move(){
         direction = Input.GetAxisRaw("Horizontal");
         playerRb.velocity = new Vector3(direction * speed, playerRb.velocity.y);
+        if(direction < 0){
+            playerTr.localScale = new Vector3(-1,1,1);
+            leftSide = true;
+        }
+        else if(direction > 0){
+            playerTr.localScale = new Vector3(1,1,1);
+            leftSide = false;
+        }
     }
 
     void Jump(){
@@ -35,7 +46,14 @@ public class Player : MonoBehaviour {
     }
 
     void Shoot(){
-        GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
-		shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBullet, 0);
+		if (Input.GetButtonDown("Fire1")) {
+			GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
+            if(leftSide == true){
+                shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletL, 0);
+            }
+            else if(leftSide == false){
+                shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletR, 0);
+            }
+		}
     }
 }
