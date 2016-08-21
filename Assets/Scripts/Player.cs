@@ -36,6 +36,6 @@ public class Player : MonoBehaviour {
 
     void Shoot(){
         GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
-        shoot.GetComponent<Rigidbody2D>().velocity(new Vector2(0, speedBullet));
+		shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBullet, 0);
     }
 }
