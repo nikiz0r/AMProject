@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-    public float speed, jumpForce;
-    public Transform groundCheck;
+    public float speed, jumpForce, speedBullet;
+    public Transform groundCheck, gun;
     public LayerMask ground;
+    public GameObject bullet;
     Rigidbody2D playerRb;
     float direction;
     bool grounded;
@@ -31,5 +32,10 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("Jump")&&grounded == true){
             playerRb.AddForce(new Vector2(0, jumpForce));
         }
+    }
+
+    void Shoot(){
+        GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
+        shoot.GetComponent<Rigidbody2D>().velocity(new Vector2(0, speedBullet));
     }
 }
