@@ -47,6 +47,7 @@ Transform:
   m_Children:
   - {fileID: 477020}
   - {fileID: 4000011040921482}
+  - {fileID: 4000013843470028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &477020
@@ -104,15 +105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b635e4619761f394284af9f074b5a8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 350
-  speedBullet: 0
+  dashForce: 5
   groundCheck: {fileID: 477020}
-  gun: {fileID: 0}
+  gun: {fileID: 4000011040921482}
   ground:
     serializedVersion: 2
     m_Bits: 256
-  bullet: {fileID: 0}
+  bullet: {fileID: 1000014147868226, guid: ca3c2d25930a24621a952e90d6b82ea5, type: 2}
+  melee: {fileID: 1000010723666026}
 --- !u!212 &21267298
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -157,6 +157,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152688}
   m_IsPrefabParent: 1
+--- !u!1 &1000010723666026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013843470028}
+  - 61: {fileID: 61000013651471494}
+  - 114: {fileID: 114000010203057660}
+  m_Layer: 0
+  m_Name: Melee
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011281360244
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,3 +202,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431726}
   m_RootOrder: 1
+--- !u!4 &4000013843470028
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010723666026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.92, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 431726}
+  m_RootOrder: 2
+--- !u!61 &61000013651471494
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010723666026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+--- !u!114 &114000010203057660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010723666026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f387cbfcf8b443686d2534ef6f3c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
