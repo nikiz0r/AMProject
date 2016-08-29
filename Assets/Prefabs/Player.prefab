@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b635e4619761f394284af9f074b5a8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 5
   groundCheck: {fileID: 477020}
   gun: {fileID: 4000011040921482}
   ground:
