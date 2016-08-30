@@ -19,11 +19,14 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
 
+    public float jumpBoost;
+    public float timeJump;
+
     
 
     void Start () {
 		speed = 10;
-		jumpForce = 600;
+		jumpForce = 300;
 		dashForce = 5000;
 		speedBullet = 15;
 		speedBulletR = speedBullet;
@@ -66,6 +69,10 @@ public class Player : MonoBehaviour {
     void Jump(){
         if (Input.GetButtonDown("Jump")&&grounded == true){
             playerRb.AddForce(new Vector2(0, jumpForce));
+        }
+        if (Input.GetButton("Jump"))
+        {
+            playerRb.AddForce(new Vector2(0, jumpBoost));
         }
     }
 
