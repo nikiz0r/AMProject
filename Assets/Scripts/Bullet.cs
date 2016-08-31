@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
+
+    void Update(){
+        IsVisible();
+    }
 	
 	void OnTriggerEnter2D(Collider2D col){
 		switch (col.transform.tag) {
@@ -11,4 +15,11 @@ public class Bullet : MonoBehaviour {
             break;
 		}
 	}
+
+    void IsVisible(){
+        if (!GetComponent<Renderer>().isVisible)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
