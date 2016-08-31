@@ -4,7 +4,7 @@ using System.Collections;
 public class Oyster : MonoBehaviour {
 
     public float oysterSpeed, pearlSpeed;
-    private Rigidbody2D oysterRb, perolaRb;
+    //private Rigidbody2D oysterRb, perolaRb;
     public Player playerScript;
     public GameObject perola;
     private float coolDown;
@@ -13,8 +13,8 @@ public class Oyster : MonoBehaviour {
 	void Start () {
 
         playerScript = FindObjectOfType(typeof(Player)) as Player;
-        oysterRb = GetComponent<Rigidbody2D>();
-        perolaRb = GetComponent<Rigidbody2D>();
+        //oysterRb = GetComponent<Rigidbody2D>();
+        //perolaRb = GetComponent<Rigidbody2D>();
         //StartCoroutine("Move");
         coolDown = Random.Range(1, 3);
         InvokeRepeating("Move", 0.5f, 2f);
