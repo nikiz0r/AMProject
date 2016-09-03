@@ -6,6 +6,7 @@ public class Bomb : MonoBehaviour {
     public GameObject bombExplosion;
     private Rigidbody2D rb;
     private MainScript mainScript;
+    private bool becameVisible = false;
 
     // Use this for initialization
     void Start() {
@@ -16,6 +17,9 @@ public class Bomb : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+
+        if (becameVisible)
+            IsVisible();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -24,6 +28,7 @@ public class Bomb : MonoBehaviour {
         {
             case "Bullet":
             case "Player":
+            case "Melee":
                 TriggerExplosion();
                 break;
             default:
@@ -35,5 +40,16 @@ public class Bomb : MonoBehaviour {
     {
         Instantiate(bombExplosion, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    void IsVisible()
+    {
+        if (!GetComponent<Renderer>().isVisible)
+            Destroy(this.gameObject);
+    }
+
+    void OnBecameVisible()
+    {
+        becameVisible = true;
     }
 }

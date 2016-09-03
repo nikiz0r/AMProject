@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     public GameObject bullet,melee;
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
+    public int coinsCollected;
     
 
     void Start () {
