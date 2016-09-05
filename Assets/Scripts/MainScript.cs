@@ -8,6 +8,7 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public float speed = 7;
+	private bool paused;
 
     // Use this for initialization
     void Start () {
@@ -22,11 +23,13 @@ public class MainScript : MonoBehaviour {
 
         InvokeRepeating("SpawnEnemies", spawnTime, spawnTime);
         InvokeRepeating("SpawnCoins", spawnTime * 4.2f, spawnTime * 4.2f);
+
+		paused = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    
+		Pause ();
 	}
 
     void SpawnEnemies()
@@ -43,4 +46,19 @@ public class MainScript : MonoBehaviour {
 
         Instantiate(selectedGO, new Vector2(8f, Random.Range(-2f, 3.3f)), selectedGO.transform.rotation);
     }
+
+	void Pause(){
+		if (Input.GetKeyDown(KeyCode.P) && paused == false) {
+			Time.timeScale = 0;
+			paused = true;
+		}
+		else if (Input.GetKeyDown(KeyCode.P) && paused == true) {
+			Time.timeScale = 1;
+			paused = false;
+		}
+	}
+
+	public void Restart(){
+		Application.LoadLevel ("main");
+	}
 }
