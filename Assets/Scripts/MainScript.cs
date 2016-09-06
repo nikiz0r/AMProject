@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MainScript : MonoBehaviour {
 
@@ -59,6 +60,6 @@ public class MainScript : MonoBehaviour {
 	}
 
 	public void Restart(){
-		Application.LoadLevel ("main");
+        SceneManager.LoadScene("main");
 	}
 }
