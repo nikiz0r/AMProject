@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour {
 		case "enemy1":
 			Destroy (col.gameObject);
             Destroy(this.gameObject);
-			break;
+            break;
 		}
 	}
 
