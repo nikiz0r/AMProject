@@ -5,18 +5,16 @@ public class Baiacu : MonoBehaviour {
     private Player playerScript;
     public float baiacuSpeed, distanceX, distanceY;
     private Rigidbody2D baiacuRb;
-    private Transform baiacuTr;
-    private SpriteRenderer baiacuSprite;
+    //private SpriteRenderer baiacuSprite;
     public Sprite baiacu, baiacuzao;
-    private BoxCollider2D baiacuCr;
+    //private BoxCollider2D baiacuCr;
     //private int baiacuHp;
 	// Use this for initialization
 	void Start () {
         baiacuRb = GetComponent<Rigidbody2D> ();
-        baiacuTr = GetComponent<Transform> ();
-        baiacuSprite = GetComponent<SpriteRenderer>();
+        //baiacuSprite = GetComponent<SpriteRenderer>();
         playerScript = FindObjectOfType(typeof(Player)) as Player;
-        baiacuCr = GetComponent<BoxCollider2D>();
+        //baiacuCr = GetComponent<BoxCollider2D>();
         
         //print("localscale " + transform.localScale);
     }
