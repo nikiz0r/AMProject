@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bomb : MonoBehaviour {
+public class Coin : MonoBehaviour {
 
-    public GameObject bombExplosion;
-    private Rigidbody2D rb;
     private MainScript mainScript;
+    private Rigidbody2D rb;
+    private Player player;
     private bool becameVisible = false;
 
     // Use this for initialization
-    void Start() {
-        rb = GetComponent<Rigidbody2D>();
+    void Start () {
         mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
+        rb = GetComponent<Rigidbody2D>();
+        player = (Player)FindObjectOfType(typeof(Player));
     }
-
-    // Update is called once per frame
-    void Update() {
+	
+	// Update is called once per frame
+	void Update () {
         rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
 
         if (becameVisible)
@@ -24,22 +25,12 @@ public class Bomb : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        switch (col.transform.tag)
+        if (col.gameObject.tag == "Player")
         {
-            case "Bullet":
-            case "Player":
-            case "Melee":
-                TriggerExplosion();
-                break;
-            default:
-                break;
+            Destroy(gameObject);
+            player.coinsCollected += 1;
+            print(player.coinsCollected);
         }
-    }
-
-    void TriggerExplosion()
-    {
-        Instantiate(bombExplosion, transform.position, transform.rotation);
-        Destroy(gameObject);
     }
 
     void IsVisible()

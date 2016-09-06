@@ -23,6 +23,14 @@ public class BombExplosion : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(col.gameObject);
+        switch (col.gameObject.tag)
+        {
+            case "Coin":
+            case "Melee":
+                break;
+            default:
+                Destroy(col.gameObject);
+                break;
+        }
     }
 }

@@ -6,24 +6,26 @@ public class Player : MonoBehaviour {
 	/* VALORES PARA MOVIMENTACAO PLAYER (PARA EFEITO DE PADRONIZACAO ESSAS VARIAVEIS NAO ESTAO
 	 MAIS PUBLICAS E SIM SEUS VALORES JA INPUTADOS NO START).
 	 * speed: 10
-	 * jumpForce: 600
 	 * speedBullet: 15
+	 * jumpForce: 600
+	 * jumpBoost: 40
+	 * dashForce: 5000
 	 */
 
-    private float speed, jumpForce, speedBullet, speedBulletL, speedBulletR, direction, dashForce;
-	private bool grounded, leftSide;
+	private float speed, jumpForce, speedBullet, speedBulletL, speedBulletR, direction, dashForce, jumpBoost;
+	private bool grounded, leftSide, jumped;
 	private int bulletLimit;
     public Transform groundCheck, gun;
     public LayerMask ground;
     public GameObject bullet,melee;
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
-
+    public int coinsCollected;
     
 
     void Start () {
 		speed = 10;
-		jumpForce = 600;
+		jumpForce = 300;
 		dashForce = 5000;
 		speedBullet = 15;
 		speedBulletR = speedBullet;
@@ -64,9 +66,22 @@ public class Player : MonoBehaviour {
     }
 
     void Jump(){
-        if (Input.GetButtonDown("Jump")&&grounded == true){
+		if (Input.GetButtonDown("Jump") && grounded) {
             playerRb.AddForce(new Vector2(0, jumpForce));
+			jumped = true;
         }
+		if (Input.GetButton("Jump") && jumped){
+			jumped = true;
+			if (playerTr.position.y > -1 || playerTr.position.y > 3.99) {
+				jumpBoost = 0;
+			} else {
+				jumpBoost = 40;
+			}
+            playerRb.AddForce(new Vector2(0, jumpBoost));
+        }
+		if (Input.GetButtonUp("Jump")&&jumped){
+			jumped = false;
+		}
     }
 
     void Shoot(){
