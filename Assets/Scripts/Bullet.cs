@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D col){
 		switch (col.transform.tag) {
-		case "Bomb":
+		case "enemy1":
 			Destroy (col.gameObject);
             Destroy(this.gameObject);
             break;
