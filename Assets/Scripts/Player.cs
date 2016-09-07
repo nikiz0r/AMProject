@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     public GameObject bullet,melee;
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
+    private MainScript mainScript;
     
 
     void Start () {
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour {
 		speedBulletR = speedBullet;
 		speedBulletL = speedBullet * -1;
 
+        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
         playerRb = GetComponent<Rigidbody2D>();
         playerTr = GetComponent<Transform>();
@@ -84,13 +86,14 @@ public class Player : MonoBehaviour {
     }
 
     void Shoot(){
-		if (bulletLimit <= 3) {
+		if (bulletLimit <= 3 && mainScript.paused == false) {
 			if (Input.GetButtonDown("Fire1")) {
 				GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
 				if(leftSide == true){
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletL, 0);
 				}
-				else if(leftSide == false){
+				else if(leftSide == false && mainScript.paused == false)
+                {
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletR, 0);
 				}
 			}
