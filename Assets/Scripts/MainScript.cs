@@ -9,7 +9,7 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public float speed = 7;
-	private bool paused;
+	public bool paused;
 
     // Use this for initialization
     void Start () {

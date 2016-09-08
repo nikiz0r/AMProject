@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
     public int coinsCollected;
+    private MainScript mainScript;
     
 
     void Start () {
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour {
 		speedBulletR = speedBullet;
 		speedBulletL = speedBullet * -1;
 
+        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
         playerRb = GetComponent<Rigidbody2D>();
         playerTr = GetComponent<Transform>();
@@ -85,13 +87,14 @@ public class Player : MonoBehaviour {
     }
 
     void Shoot(){
-		if (bulletLimit <= 3) {
+		if (bulletLimit <= 3 && mainScript.paused) {
 			if (Input.GetButtonDown("Fire1")) {
 				GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
 				if(leftSide == true){
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletL, 0);
 				}
-				else if(leftSide == false){
+				else if(leftSide == false && mainScript.paused == false)
+                {
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletR, 0);
 				}
 			}
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour {
     }
 
 	void Dash(){
-		if (Input.GetButtonDown("Fire2")) {
+		if (Input.GetButtonDown("Fire2") && !mainScript.paused) {
 			if (leftSide == false) {
 				playerRb.AddForce (new Vector2 (dashForce, 0));
 			}
@@ -110,11 +113,16 @@ public class Player : MonoBehaviour {
 	}
 
 	void MeleeAttack(){
-		if (Input.GetButtonDown("Fire3")) {
-			melee.SetActive (true);
-		}
-		if (Input.GetButtonUp("Fire3")) {
-			melee.SetActive (false);
-		}
+        if (!mainScript.paused)
+        {
+            if (Input.GetButtonDown("Fire3"))
+            {
+                melee.SetActive(true);
+            }
+            if (Input.GetButtonUp("Fire3"))
+            {
+                melee.SetActive(false);
+            }
+        }
 	}
 }
