@@ -87,13 +87,13 @@ public class Player : MonoBehaviour {
     }
 
     void Shoot(){
-		if (bulletLimit <= 3 && mainScript.paused) {
+		if (bulletLimit <= 3 && !mainScript.paused) {
 			if (Input.GetButtonDown("Fire1")) {
 				GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
 				if(leftSide == true){
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletL, 0);
 				}
-				else if(leftSide == false && mainScript.paused == false)
+				else if(leftSide == false && !mainScript.paused)
                 {
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletR, 0);
 				}

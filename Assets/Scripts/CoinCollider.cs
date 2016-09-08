@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CoinCollider : MonoBehaviour {
+public class CoinCollider : BaseBehaviour {
 
     public GameObject bixoBait;
     private Player player;
-    private bool becameVisible = false;
 
     // Use this for initialization
-    void Start () {
+    public override void Start()
+    {
+        base.Start();
         player = (Player)FindObjectOfType(typeof(Player));
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (becameVisible)
-            IsVisible();
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -27,16 +28,5 @@ public class CoinCollider : MonoBehaviour {
             player.coinsCollected += 10;
             print(player.coinsCollected);
         }
-    }
-
-    void IsVisible()
-    {
-        if (!GetComponent<Renderer>().isVisible)
-            Destroy(this.gameObject);
-    }
-
-    void OnBecameVisible()
-    {
-        becameVisible = true;
     }
 }
