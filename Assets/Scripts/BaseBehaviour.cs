@@ -6,6 +6,7 @@ public class BaseBehaviour : MonoBehaviour {
     private bool becameVisible = false;
     public Rigidbody2D rb;
     private MainScript mainScript;
+    public bool handleVisibilityOnly = false;
 
     // Use this for initialization
     public virtual void Start () {
@@ -18,8 +19,11 @@ public class BaseBehaviour : MonoBehaviour {
         if (becameVisible)
             IsVisible();
 
-        if (rb != null)
-            rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+        if (!handleVisibilityOnly)
+        {
+            if (rb != null)
+                rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+        }
     }
 
     void IsVisible()

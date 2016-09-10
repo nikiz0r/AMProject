@@ -7,12 +7,14 @@ public class Bixao : BaseBehaviour {
     public override void Start()
     {
         base.Start();
+        base.handleVisibilityOnly = true;
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        base.rb.velocity = new Vector2(base.rb.velocity.x, -30f);
+        base.Update();
+        rb.velocity = new Vector2(rb.velocity.x, -30f);
     }
 
     void OnTriggerEnter2D(Collider2D col)
