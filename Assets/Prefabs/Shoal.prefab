@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012560000912}
   - 212: {fileID: 212000012092763380}
-  - 61: {fileID: 61000010066841420}
   - 114: {fileID: 114000010259451184}
   - 50: {fileID: 50000012985087544}
+  - 68: {fileID: 68000014147241696}
   m_Layer: 0
   m_Name: Shoal
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013525957842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.3375002, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -59,9 +59,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &61000010066841420
-BoxCollider2D:
+  m_Constraints: 6
+--- !u!68 &68000014147241696
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 3, y: 7.68}
+  m_Points:
+  - {x: 1.4973516, y: -3.2586644}
+  - {x: 1.5, y: 3.6101906}
 --- !u!114 &114000010259451184
 MonoBehaviour:
   m_ObjectHideFlags: 1

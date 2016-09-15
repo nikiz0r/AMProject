@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
 	private Transform playerTr;
     public int coinsCollected;
     private MainScript mainScript;
-    
+    public bool movementBlock = false;
 
     void Start () {
 		speed = 10;
@@ -52,16 +52,21 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate(){
         Move();
+        ShoalAction();
     }
 
     void Move(){
         direction = Input.GetAxisRaw("Horizontal");
-        playerRb.velocity = new Vector3(direction * speed, playerRb.velocity.y);
+
+        if (!movementBlock)
+            playerRb.velocity = new Vector3(direction * speed, playerRb.velocity.y);
+
         if(direction < 0){
             playerTr.localScale = new Vector3(-1,1,1);
             leftSide = true;
         }
-        else if(direction > 0){
+        else if(direction > 0)
+        {
             playerTr.localScale = new Vector3(1,1,1);
             leftSide = false;
         }
@@ -102,7 +107,7 @@ public class Player : MonoBehaviour {
     }
 
 	void Dash(){
-		if (Input.GetButtonDown("Fire2") && !mainScript.paused) {
+		if (Input.GetButtonDown("Fire2") && !mainScript.paused && !movementBlock) {
 			if (leftSide == false) {
 				playerRb.AddForce (new Vector2 (dashForce, 0));
 			}
@@ -125,4 +130,9 @@ public class Player : MonoBehaviour {
             }
         }
 	}
+
+    void ShoalAction()
+    {
+        //TODO: instanciar o shoal
+    }
 }
