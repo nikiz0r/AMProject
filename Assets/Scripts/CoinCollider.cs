@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class CoinCollider : MonoBehaviour {
+public class CoinCollider : BaseBehaviour {
 
     public GameObject bixoBait;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    public override void Start()
+    {
+        base.Start();
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -21,6 +22,10 @@ public class CoinCollider : MonoBehaviour {
         {
             Destroy(bixoBait.gameObject);
             Destroy(gameObject);
+            ConfigurationScript.coinsCollected += ConfigurationScript.superCoinValue;
+
+            // TODO: Remover esse cara quando a exibicao estiver no Canvas
+            print(ConfigurationScript.coinsCollected);
         }
     }
 }

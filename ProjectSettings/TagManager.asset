@@ -6,8 +6,9 @@ TagManager:
   tags:
   - enemy1
   - Bullet
-  - Bomb
   - Explosion
+  - Coin
+  - Melee
   layers:
   - Default
   - TransparentFX

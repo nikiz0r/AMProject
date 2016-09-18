@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BixoBait : MonoBehaviour {
+public class BixoBait : BaseBehaviour {
 
     public GameObject bixao, danger;
-    private MainScript mainScript;
     private bool bixaoInstanciado = false;
-    private Rigidbody2D rb;
 
     // Use this for initialization
-    void Start () {
-        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
-        rb = GetComponent<Rigidbody2D>();
+    public override void Start()
+    {
+        base.Start();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D col)

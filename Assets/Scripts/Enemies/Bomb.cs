@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bomb : MonoBehaviour {
+public class Bomb : BaseBehaviour {
 
     public GameObject bombExplosion;
-    private Rigidbody2D rb;
-    private MainScript mainScript;
 
     // Use this for initialization
-    void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
+    public override void Start()
+    {
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update() {
-        rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+    public override void Update()
+    {
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -24,6 +23,7 @@ public class Bomb : MonoBehaviour {
         {
             case "Bullet":
             case "Player":
+            case "Melee":
                 TriggerExplosion();
                 break;
             default:

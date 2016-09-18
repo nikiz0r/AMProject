@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
@@ -18,8 +17,6 @@ public class Bullet : MonoBehaviour {
 
     void IsVisible(){
         if (!GetComponent<Renderer>().isVisible)
-        {
             Destroy(this.gameObject);
-        }
     }
 }
