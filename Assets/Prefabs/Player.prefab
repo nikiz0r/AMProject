@@ -114,6 +114,8 @@ MonoBehaviour:
   melee: {fileID: 1000010723666026}
   coinsCollected: 0
   movementBlock: 0
+  shoalExists: 0
+  shoal: {fileID: 1000013525957842, guid: be53bf27bca26e44abaad27e2c5d5e53, type: 2}
 --- !u!212 &21267298
 SpriteRenderer:
   m_ObjectHideFlags: 1

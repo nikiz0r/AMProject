@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	 * dashForce: 5000
 	 */
 
-	private float speed, jumpForce, speedBullet, speedBulletL, speedBulletR, direction, dashForce, jumpBoost;
+	private float direction, jumpBoost;
 	private bool grounded, leftSide, jumped;
 	private int bulletLimit;
     public Transform groundCheck, gun;
@@ -20,18 +20,15 @@ public class Player : MonoBehaviour {
     public GameObject bullet,melee;
 	private Rigidbody2D playerRb;
 	private Transform playerTr;
-    public int coinsCollected;
     private MainScript mainScript;
     public bool movementBlock = false;
 
-    void Start () {
-		speed = 10;
-		jumpForce = 300;
-		dashForce = 5000;
-		speedBullet = 15;
-		speedBulletR = speedBullet;
-		speedBulletL = speedBullet * -1;
+    public bool shoalExists = false;
+    public GameObject shoal;
 
+    private int dashCount = 3;
+
+    void Start () {
         mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
         playerRb = GetComponent<Rigidbody2D>();
@@ -42,24 +39,23 @@ public class Player : MonoBehaviour {
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f,ground);
 
 		//LIMITADOR DE BALAS NA TELA
-		bulletLimit = GameObject.FindGameObjectsWithTag ("Bullet").Length + 1;
+		bulletLimit = GameObject.FindGameObjectsWithTag("Bullet").Length + 1;
 
         Jump();
 		Shoot();
-		Dash ();
-		MeleeAttack ();
+		Dash();
+		MeleeAttack();
 	}
 
     void FixedUpdate(){
         Move();
-        ShoalAction();
     }
 
     void Move(){
         direction = Input.GetAxisRaw("Horizontal");
 
         if (!movementBlock)
-            playerRb.velocity = new Vector3(direction * speed, playerRb.velocity.y);
+            playerRb.velocity = new Vector3(direction * ConfigurationScript.playerSpeed, playerRb.velocity.y);
 
         if(direction < 0){
             playerTr.localScale = new Vector3(-1,1,1);
@@ -70,11 +66,14 @@ public class Player : MonoBehaviour {
             playerTr.localScale = new Vector3(1,1,1);
             leftSide = false;
         }
+
+        if (transform.position.x <= ConfigurationScript.shoalTriggerPosition && !shoalExists)
+            ShoalAction();
     }
 
     void Jump(){
 		if (Input.GetButtonDown("Jump") && grounded) {
-            playerRb.AddForce(new Vector2(0, jumpForce));
+            playerRb.AddForce(new Vector2(0, ConfigurationScript.jumpForce));
 			jumped = true;
         }
 		if (Input.GetButton("Jump") && jumped){
@@ -82,38 +81,37 @@ public class Player : MonoBehaviour {
 			if (playerTr.position.y > -1 || playerTr.position.y > 3.99) {
 				jumpBoost = 0;
 			} else {
-				jumpBoost = 40;
+				jumpBoost = ConfigurationScript.jumpBoost;
 			}
             playerRb.AddForce(new Vector2(0, jumpBoost));
         }
-		if (Input.GetButtonUp("Jump")&&jumped){
+		if (Input.GetButtonUp("Jump") && jumped){
 			jumped = false;
 		}
     }
 
     void Shoot(){
-		if (bulletLimit <= 3 && !mainScript.paused) {
+		if (bulletLimit <= ConfigurationScript.bulletLimit && !mainScript.paused) {
 			if (Input.GetButtonDown("Fire1")) {
 				GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
 				if(leftSide == true){
-					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletL, 0);
+					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(ConfigurationScript.speedBulletL, 0);
 				}
 				else if(leftSide == false && !mainScript.paused)
                 {
-					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(speedBulletR, 0);
+					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(ConfigurationScript.speedBulletR, 0);
 				}
 			}
 		}
     }
 
 	void Dash(){
-		if (Input.GetButtonDown("Fire2") && !mainScript.paused && !movementBlock) {
-			if (leftSide == false) {
-				playerRb.AddForce (new Vector2 (dashForce, 0));
-			}
-			else if (leftSide == true) {
-				playerRb.AddForce (new Vector2 (-dashForce, 0));
-			}
+        if (Input.GetButtonDown("Fire2") && !mainScript.paused && !movementBlock && dashCount > 0) {
+			if (leftSide == false)
+				playerRb.AddForce (new Vector2 (ConfigurationScript.dashForce, 0));
+			else if (leftSide == true)
+				playerRb.AddForce (new Vector2 (-ConfigurationScript.dashForce, 0));
+            dashCount--;
 		}
 	}
 
@@ -133,6 +131,7 @@ public class Player : MonoBehaviour {
 
     void ShoalAction()
     {
-        //TODO: instanciar o shoal
+        shoalExists = true;
+        Instantiate(shoal, new Vector2(ConfigurationScript.shoalAwakeXPosition, 0), transform.rotation);
     }
 }

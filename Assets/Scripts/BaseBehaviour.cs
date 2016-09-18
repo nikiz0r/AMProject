@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BaseBehaviour : MonoBehaviour {
 
     private bool becameVisible = false;
     public Rigidbody2D rb;
-    private MainScript mainScript;
     public bool handleVisibilityOnly = false;
 
     // Use this for initialization
     public virtual void Start () {
         rb = GetComponent<Rigidbody2D>();
-        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
     }
 	
 	// Update is called once per frame
@@ -22,7 +19,7 @@ public class BaseBehaviour : MonoBehaviour {
         if (!handleVisibilityOnly)
         {
             if (rb != null)
-                rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+                rb.velocity = new Vector2(-ConfigurationScript.baseMovement * ConfigurationScript.baseSpeed, rb.velocity.y);
         }
     }
 

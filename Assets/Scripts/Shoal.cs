@@ -10,7 +10,7 @@ public class Shoal : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         playerScript = (Player)FindObjectOfType(typeof(Player));
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,10 +29,11 @@ public class Shoal : MonoBehaviour {
 
     IEnumerator Move()
     {
-        rb.velocity = new Vector2(3, rb.velocity.y);
-        yield return new WaitForSeconds(0.8f);
-        rb.velocity = new Vector2(-3, rb.velocity.y);
-        yield return new WaitForSeconds(0.8f);
+        rb.velocity = new Vector2(ConfigurationScript.shoalMovementSpeed, rb.velocity.y);
+        yield return new WaitForSeconds(ConfigurationScript.shoalDelayTime);
+        rb.velocity = new Vector2(-ConfigurationScript.shoalMovementSpeed, rb.velocity.y);
+        yield return new WaitForSeconds(ConfigurationScript.shoalDelayTime);
+        playerScript.shoalExists = false;
         Destroy(gameObject);
     }
 }

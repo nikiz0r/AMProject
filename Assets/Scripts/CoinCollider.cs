@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CoinCollider : BaseBehaviour {
 
     public GameObject bixoBait;
-    private Player player;
 
     // Use this for initialization
     public override void Start()
     {
         base.Start();
-        player = (Player)FindObjectOfType(typeof(Player));
     }
 
     // Update is called once per frame
@@ -25,8 +22,10 @@ public class CoinCollider : BaseBehaviour {
         {
             Destroy(bixoBait.gameObject);
             Destroy(gameObject);
-            player.coinsCollected += 10;
-            print(player.coinsCollected);
+            ConfigurationScript.coinsCollected += ConfigurationScript.superCoinValue;
+
+            // TODO: Remover esse cara quando a exibicao estiver no Canvas
+            print(ConfigurationScript.coinsCollected);
         }
     }
 }

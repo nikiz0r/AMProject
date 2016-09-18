@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Coin : BaseBehaviour {
-
-    private Player player;
 
     // Use this for initialization
     public override void Start()
     {
         base.Start();
-        player = (Player)FindObjectOfType(typeof(Player));
     }
 
     // Update is called once per frame
@@ -23,8 +19,8 @@ public class Coin : BaseBehaviour {
         if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            player.coinsCollected += 1;
-            print(player.coinsCollected);
+            ConfigurationScript.coinsCollected += ConfigurationScript.regularCoinValue;
+            print(ConfigurationScript.coinsCollected);
         }
     }
 }
