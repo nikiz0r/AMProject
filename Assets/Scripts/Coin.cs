@@ -20,7 +20,6 @@ public class Coin : BaseBehaviour {
         {
             Destroy(gameObject);
             ConfigurationScript.coinsCollected += ConfigurationScript.regularCoinValue;
-            print(ConfigurationScript.coinsCollected);
         }
     }
 }

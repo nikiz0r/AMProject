@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainScript : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
 	public bool paused;
+    public Text score;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +32,8 @@ public class MainScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Pause ();
+
+        score.text = string.Format("Coins Collected: {0}", ConfigurationScript.coinsCollected);
 	}
 
     void SpawnEnemies()
@@ -37,14 +41,14 @@ public class MainScript : MonoBehaviour {
         // pick randomly one gameObject
         GameObject selectedGO = spawnList[Random.Range(0, spawnList.Count)];
 
-        Instantiate(selectedGO, new Vector2(8f, Random.Range(-2f, 3.3f)), selectedGO.transform.rotation);
+        Instantiate(selectedGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), selectedGO.transform.rotation);
     }
 
     void SpawnCoins()
     {
         GameObject selectedGO = coinPatternsList[Random.Range(0, coinPatternsList.Count)];
 
-        Instantiate(selectedGO, new Vector2(8f, Random.Range(-2f, 3.3f)), selectedGO.transform.rotation);
+        Instantiate(selectedGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), selectedGO.transform.rotation);
     }
 
 	void Pause(){

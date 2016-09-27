@@ -2,12 +2,8 @@
 
 public class ConfigurationScript : MonoBehaviour {
 
-    public static float shoalTriggerPosition = -5;
-    public static float shoalAwakeXPosition = -8;
-    public static int coinsCollected;
-    public static float baseMovement = 1;
-    public static float baseSpeed = 7;
-    public static int bulletLimit = 3;
+    public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7, minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f;
+    public static int coinsCollected, bulletLimit = 3;
 
     #region Player
     public static float playerSpeed = 10;
