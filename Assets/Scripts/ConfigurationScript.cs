@@ -2,7 +2,8 @@
 
 public class ConfigurationScript : MonoBehaviour {
 
-    public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7, minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f;
+    public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7
+        , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2;
     public static int coinsCollected, bulletLimit = 3;
 
     #region Player
@@ -22,5 +23,9 @@ public class ConfigurationScript : MonoBehaviour {
     #region Shoal
     public static float shoalMovementSpeed = 3;
     public static float shoalDelayTime = 0.8f;
+    #endregion
+
+    #region Victim
+    public static float victimTopTopPosition = 4, victimTopBottomPosition = 0.3f, victimBottomTopPosition = -0.3f, victimBottomBottomPosition = -3.5f;
     #endregion
 }
