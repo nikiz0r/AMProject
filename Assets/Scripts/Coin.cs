@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Coin : MonoBehaviour {
-
-    private MainScript mainScript;
-    private Rigidbody2D rb;
+public class Coin : BaseBehaviour {
 
     // Use this for initialization
-    void Start () {
-        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
-        rb = GetComponent<Rigidbody2D>();
+    public override void Start()
+    {
+        base.Start();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        rb.velocity = new Vector2(-1 * mainScript.speed, rb.velocity.y);
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -22,6 +19,8 @@ public class Coin : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            ConfigurationScript.coinsCollected += ConfigurationScript.regularCoinValue;
+            print(ConfigurationScript.coinsCollected);
         }
     }
 }

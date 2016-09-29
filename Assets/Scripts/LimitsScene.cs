@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class LimitsScene : MonoBehaviour {
 	private Camera cam;
@@ -16,6 +15,5 @@ public class LimitsScene : MonoBehaviour {
 		upRight = cam.ScreenToWorldPoint (new Vector3 (Screen.width, Screen.height));
 
 		colider.points = new Vector2[5]{ downLeft, upLeft, upRight, downRight, downLeft };
-
 	}
 }

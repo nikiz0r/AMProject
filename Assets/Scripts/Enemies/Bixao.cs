@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bixao : MonoBehaviour {
-
-    private Rigidbody2D rb;
+public class Bixao : BaseBehaviour {
 
     // Use this for initialization
-    void Start () {
-        rb = GetComponent<Rigidbody2D>();
+    public override void Start()
+    {
+        base.Start();
+        base.handleVisibilityOnly = true;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
         rb.velocity = new Vector2(rb.velocity.x, -30f);
     }
 
