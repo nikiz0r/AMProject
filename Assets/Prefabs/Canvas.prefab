@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cdacb623407ba408bad79c9f908f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VictimGO: {fileID: 1000012541022552, guid: 5e8c1a0ae21164cea8b32b4bb48f9fee, type: 2}
   paused: 0
   score: {fileID: 114000012728836372}
 --- !u!114 &114000012124950192

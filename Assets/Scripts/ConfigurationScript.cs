@@ -28,4 +28,10 @@ public class ConfigurationScript : MonoBehaviour {
     #region Victim
     public static float victimTopTopPosition = 4, victimTopBottomPosition = 0.3f, victimBottomTopPosition = -0.3f, victimBottomBottomPosition = -3.5f;
     #endregion
+
+    #region SpawnTimers
+    public static float enemySpawnTime = 2;
+    public static float coinSpawnTime = 8;
+    public static float victimSpawnTime = 10;
+    #endregion
 }

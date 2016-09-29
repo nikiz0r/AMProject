@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class MainScript : MonoBehaviour {
 
-    private float spawnTime = 2f;
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
+    public GameObject VictimGO;
 	public bool paused;
     public Text score;
 
@@ -23,10 +23,11 @@ public class MainScript : MonoBehaviour {
         foreach (GameObject GO in CoinGOs)
             coinPatternsList.Add(GO);
 
-        InvokeRepeating("SpawnEnemies", spawnTime, spawnTime);
-        InvokeRepeating("SpawnCoins", spawnTime * 4.2f, spawnTime * 4.2f);
+        InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
+        InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
+        InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
 
-		paused = false;
+        paused = false;
     }
 	
 	// Update is called once per frame
@@ -48,10 +49,27 @@ public class MainScript : MonoBehaviour {
     {
         GameObject selectedGO = coinPatternsList[Random.Range(0, coinPatternsList.Count)];
 
-        Instantiate(selectedGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), selectedGO.transform.rotation);
+        float yMinPosition = ConfigurationScript.minSpawnYPosition, yMaxPosition = ConfigurationScript.maxSpawnYPosition;
+        if(selectedGO.name == "CoinPattern2")
+        {
+            yMinPosition = -3.5f;
+            yMaxPosition = 0;
+        }
+        else if(selectedGO.name == "CoinPattern3")
+        {
+            yMinPosition = -3.5f;
+            yMaxPosition = 1.2f;
+        }
+
+        Instantiate(selectedGO, new Vector2(8f, Random.Range(yMinPosition, yMaxPosition)), selectedGO.transform.rotation);
     }
 
-	void Pause(){
+    void SpawnVictims()
+    {
+        Instantiate(VictimGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), VictimGO.transform.rotation);
+    }
+
+    void Pause(){
 		if (Input.GetKeyDown(KeyCode.P) && paused == false) {
 			Time.timeScale = 0;
 			paused = true;

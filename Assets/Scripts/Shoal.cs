@@ -10,13 +10,13 @@ public class Shoal : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         playerScript = (Player)FindObjectOfType(typeof(Player));
-        StartCoroutine(Move());
+        //StartCoroutine(Move());
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
+        StartCoroutine(Move());
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
