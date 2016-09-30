@@ -20,7 +20,8 @@ public class Shoal : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        playerScript.movementBlock = true;
+        if (playerScript != null)
+            playerScript.movementBlock = true;
     }
 
     void OnCollisionExit2D(Collision2D col)
