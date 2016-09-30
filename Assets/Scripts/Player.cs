@@ -135,3 +135,4 @@ public class Player : MonoBehaviour {
         Instantiate(shoal, new Vector2(ConfigurationScript.shoalAwakeXPosition, 0), transform.rotation);
     }
 }
+
