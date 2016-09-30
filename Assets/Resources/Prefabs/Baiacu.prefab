@@ -25,7 +25,7 @@ GameObject:
   - 61: {fileID: 61000011912209128}
   m_Layer: 0
   m_Name: Baiacu
-  m_TagString: Untagged
+  m_TagString: enemy1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   handleVisibilityOnly: 0
-  baiacuSpeed: 10
   distanceX: 0
   distanceY: 0
 --- !u!212 &212000011223298154
