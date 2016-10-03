@@ -24,9 +24,9 @@ public class BixoBait : BaseBehaviour {
         {
             if (!bixaoInstanciado)
             {
-                Instantiate(danger, new Vector2(gameObject.transform.position.x, 4.35f), gameObject.transform.rotation);
+                Instantiate(danger, new Vector2(col.gameObject.transform.position.x, 4.35f), gameObject.transform.rotation);
                 bixaoInstanciado = true;
-                Instantiate(bixao, new Vector2(gameObject.transform.position.x, 30f), gameObject.transform.rotation);
+                Instantiate(bixao, new Vector2(col.gameObject.transform.position.x, 15f), gameObject.transform.rotation);
             }
         }
     }

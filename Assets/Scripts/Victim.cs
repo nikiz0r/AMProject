@@ -1,44 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Victim : MonoBehaviour {
-	public GameObject victim;
-	public Transform a, b;
-	public float speed;
-	private Vector3 way;
-	private MainScript mainScript;
-	private Rigidbody2D victimRB;
+public class Victim : BaseBehaviour {
 
-	void Start () {
-		victimRB = GetComponent<Rigidbody2D> ();
-		mainScript = (MainScript) FindObjectOfType(typeof(MainScript));
-		way = b.position;
-	}
+    private bool moveDown = true;
+    private bool locationTop = true;
 
-	void Update () {
-		Move ();
-	}
+    public override void Start()
+    {
+        base.Start();
+    }
 
-	void Move(){
-		//victimRB.velocity = new Vector3 (-1 * mainScript.speed, victimRB.velocity.y);
-		victim.transform.position = Vector3.MoveTowards (victim.transform.position, way,speed * Time.deltaTime);
-		if (victim.transform.position == way) {
-			if (way == a.position) {
-				b.position = new Vector3(b.position.x,Random.Range (-2, 2));
-				way = b.position;
-			}
-			else if (way == b.position) {
-				a.position = new Vector3(a.position.x,Random.Range (-2, 2));
-				way = a.position;
-			}
-		}
-	}
+    public override void Update()
+    {
+        base.Update();
 
-	void OnTriggerEnter2D(Collider2D col){
+        if (rb.position.y < ConfigurationScript.victimBottomTopPosition)
+            locationTop = false;
+        
+        Movement();
+    }
+
+    void Movement()
+    {
+        if (moveDown)
+            rb.velocity = new Vector2(rb.velocity.x, -ConfigurationScript.victimSpeed);
+        else
+            rb.velocity = new Vector2(rb.velocity.x, ConfigurationScript.victimSpeed);
+
+        if (locationTop)
+        {
+            if (rb.position.y > ConfigurationScript.victimTopTopPosition)
+                moveDown = true;
+            else if (rb.position.y < ConfigurationScript.victimTopBottomPosition)
+                moveDown = false;
+        }
+        else
+        {
+            if (rb.position.y > ConfigurationScript.victimBottomTopPosition)
+                moveDown = true;
+            else if (rb.position.y < ConfigurationScript.victimBottomBottomPosition)
+                moveDown = false;
+        }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
 		switch (col.transform.tag) {
 		case "Player":
-			Destroy (this.gameObject);
-			break;
+			Destroy(gameObject);
+            ConfigurationScript.victimsCollected += 1;
+            if (ConfigurationScript.victimsCollected <= 7)
+            {
+                ConfigurationScript.playerSpeed = ConfigurationScript.playerBaseSpeed - ConfigurationScript.victimsCollected;
+                ConfigurationScript.jumpForce = ConfigurationScript.baseJumpForce - ConfigurationScript.victimsCollected * 10;
+                ConfigurationScript.jumpBoost = ConfigurationScript.baseJumpBoost - ConfigurationScript.victimsCollected * 3;
+                }
+            break;
 		}
 	}
 }
