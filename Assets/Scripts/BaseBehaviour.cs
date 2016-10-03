@@ -26,7 +26,13 @@ public class BaseBehaviour : MonoBehaviour {
     void IsVisible()
     {
         if (!GetComponent<Renderer>().isVisible)
+        {
             Destroy(this.gameObject);
+
+            // se tem parent destroi ele tambem
+            if (gameObject.transform.parent != null)
+                Destroy(gameObject.transform.parent.gameObject);
+        }
     }
 
     void OnBecameVisible()

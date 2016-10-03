@@ -4,12 +4,15 @@ public class ConfigurationScript : MonoBehaviour {
 
     public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7
         , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2;
-    public static int coinsCollected, bulletLimit = 3;
+    public static int score, bulletLimit = 3, victimsCollected;
 
     #region Player
+    public static float playerBaseSpeed = 10;
     public static float playerSpeed = 10;
-	public static float jumpForce = 300;
-	public static float jumpBoost = 40;
+    public static float baseJumpForce = 300;
+    public static float jumpForce = 300;
+    public static float baseJumpBoost = 40;
+    public static float jumpBoost = 40;
     public static float dashForce = 5000;
 	public static float speedBulletR = 15;
     public static float speedBulletL = speedBulletR * -1;

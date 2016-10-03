@@ -22,7 +22,7 @@ public class CoinCollider : BaseBehaviour {
         {
             Destroy(bixoBait.gameObject);
             Destroy(gameObject);
-            ConfigurationScript.coinsCollected += ConfigurationScript.superCoinValue;
+            ConfigurationScript.score += ConfigurationScript.superCoinValue;
         }
     }
 }

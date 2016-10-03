@@ -34,6 +34,6 @@ public class Bomb : BaseBehaviour {
     void TriggerExplosion()
     {
         Instantiate(bombExplosion, transform.position, transform.rotation);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

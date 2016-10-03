@@ -34,7 +34,7 @@ public class MainScript : MonoBehaviour {
 	void Update () {
 		Pause ();
 
-        score.text = string.Format("Coins Collected: {0}", ConfigurationScript.coinsCollected);
+        score.text = string.Format("Score: {0}", ConfigurationScript.score);
 	}
 
     void SpawnEnemies()
