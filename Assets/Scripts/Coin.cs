@@ -19,8 +19,7 @@ public class Coin : BaseBehaviour {
         if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            ConfigurationScript.coinsCollected += ConfigurationScript.regularCoinValue;
-            print(ConfigurationScript.coinsCollected);
+            ConfigurationScript.score += ConfigurationScript.regularCoinValue;
         }
     }
 }

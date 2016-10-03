@@ -22,10 +22,7 @@ public class CoinCollider : BaseBehaviour {
         {
             Destroy(bixoBait.gameObject);
             Destroy(gameObject);
-            ConfigurationScript.coinsCollected += ConfigurationScript.superCoinValue;
-
-            // TODO: Remover esse cara quando a exibicao estiver no Canvas
-            print(ConfigurationScript.coinsCollected);
+            ConfigurationScript.score += ConfigurationScript.superCoinValue;
         }
     }
 }

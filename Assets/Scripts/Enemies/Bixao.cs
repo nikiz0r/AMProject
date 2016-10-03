@@ -7,7 +7,7 @@ public class Bixao : BaseBehaviour {
     public override void Start()
     {
         base.Start();
-        base.handleVisibilityOnly = true;
+        handleVisibilityOnly = true;
     }
 
     // Update is called once per frame
