@@ -9,6 +9,7 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public GameObject VictimGO;
+    public GameObject DropZoneGO;
 	public bool paused;
     public Text score;
     public Image dashFill;
@@ -29,6 +30,7 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
         InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
         InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
+        InvokeRepeating("SpawnDropZones", ConfigurationScript.dropZoneSpawnTime, ConfigurationScript.dropZoneSpawnTime);
 
         paused = false;
     }
@@ -72,6 +74,11 @@ public class MainScript : MonoBehaviour {
     void SpawnVictims()
     {
         Instantiate(VictimGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), VictimGO.transform.rotation);
+    }
+
+    void SpawnDropZones()
+    {
+        Instantiate(DropZoneGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), DropZoneGO.transform.rotation);
     }
 
     void Pause(){
