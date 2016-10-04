@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VictimGO: {fileID: 1000012541022552, guid: 5e8c1a0ae21164cea8b32b4bb48f9fee, type: 2}
+  DropZoneGO: {fileID: 1000011523633012, guid: 7e22e1f920d867a4696e8c4dd16e0357, type: 2}
   paused: 0
   score: {fileID: 114000012728836372}
   dashFill: {fileID: 114000013678383110}
