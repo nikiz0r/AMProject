@@ -14,7 +14,7 @@ public class DropZone : BaseBehaviour {
     // Update is called once per frame
     public override void Update()
     {
-        //base.Update();
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -32,6 +32,7 @@ public class DropZone : BaseBehaviour {
         int totalPts = ConfigurationScript.victimBaseValue * ConfigurationScript.victimsCollected * ConfigurationScript.victimsCollected * 2;
         
         yield return StartCoroutine(AddPoints(totalPts));
+        rb.velocity = new Vector2(rb.velocity.x, ConfigurationScript.baseMovement * ConfigurationScript.baseSpeed);
 
         // reseta a qtde de vitimas e restaura os atributos base do player
         ConfigurationScript.victimsCollected = 0;

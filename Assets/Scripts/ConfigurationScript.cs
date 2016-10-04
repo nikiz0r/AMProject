@@ -38,5 +38,6 @@ public class ConfigurationScript : MonoBehaviour {
     public static float enemySpawnTime = 2;
     public static float coinSpawnTime = 8;
     public static float victimSpawnTime = 10;
+    public static float dropZoneSpawnTime = 30;
     #endregion
 }
