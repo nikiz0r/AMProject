@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Baiacu : BaseBehaviour {
     private Player playerScript;
     public float distanceX, distanceY;
+    public Sprite baiacuP, baiacuG;
+    private SpriteRenderer baiacuSr;
 
     // Use this for initialization
     public override void Start()
     {
+        transform.localScale = new Vector3(2, 2);
+        baiacuSr = GetComponent<SpriteRenderer>();
+        baiacuSr.sprite = baiacuP;
         base.Start();
         playerScript = FindObjectOfType(typeof(Player)) as Player;
     }
@@ -31,8 +37,10 @@ public class Baiacu : BaseBehaviour {
         else if(playerScript.transform.position.y < rb.transform.position.y)
             distanceY = rb.transform.position.y - playerScript.transform.position.y;
 
-        if (distanceX < 2.5 && distanceY < 2.5)
+        if (distanceX < 2.5 && distanceY < 2.5){
             transform.localScale = new Vector3(3, 3);
+            baiacuSr.sprite = baiacuG;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
