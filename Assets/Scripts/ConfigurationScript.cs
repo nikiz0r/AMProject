@@ -19,8 +19,8 @@ public class ConfigurationScript : MonoBehaviour {
     #endregion
 
     #region Coin
-    public static int regularCoinValue = 1;
-    public static int superCoinValue = 5;
+    public static int regularCoinValue = 5;
+    public static int superCoinValue = 50;
     #endregion
 
     #region Shoal
@@ -29,7 +29,9 @@ public class ConfigurationScript : MonoBehaviour {
     #endregion
 
     #region Victim
-    public static float victimTopTopPosition = 4, victimTopBottomPosition = 0.3f, victimBottomTopPosition = -0.3f, victimBottomBottomPosition = -3.5f;
+    public static float victimTopTopPosition = 4, victimTopBottomPosition = 0.3f, victimBottomTopPosition = -0.3f,
+        victimBottomBottomPosition = -3.5f;
+    public static int victimBaseValue = 100;
     #endregion
 
     #region SpawnTimers
