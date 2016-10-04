@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Player : MonoBehaviour {
 
@@ -26,13 +25,14 @@ public class Player : MonoBehaviour {
     public bool shoalExists = false;
     public GameObject shoal;
 
-    private int dashCount = 3;
+    public float dashCount = 3;
 
     void Start () {
         mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
         playerRb = GetComponent<Rigidbody2D>();
         playerTr = GetComponent<Transform>();
+        InvokeRepeating("DashSum", 1, 1);
 	}
 	
 	void Update () {
@@ -133,6 +133,16 @@ public class Player : MonoBehaviour {
     {
         shoalExists = true;
         Instantiate(shoal, new Vector2(ConfigurationScript.shoalAwakeXPosition, 0), transform.rotation);
+    }
+
+    void DashSum(){
+        if (dashCount < 3){
+            dashCount += 0.15f;
+        }
+        else if (dashCount >= 3){
+            dashCount = 3;
+        }
+        print(dashCount);
     }
 }
 
