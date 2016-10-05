@@ -48,8 +48,7 @@ public class MainScript : MonoBehaviour {
         // Player morreu
         if(playerScript == null)
         {
-            handleScore.AddScore("Taina");
-            Time.timeScale = 0;
+            SceneManager.LoadScene("RankScene");
         }
 	}
 

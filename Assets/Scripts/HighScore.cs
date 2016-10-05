@@ -3,6 +3,34 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+public class HighScore : MonoBehaviour
+{
+    public bool gameOver;
+
+    void Start()
+    {
+        gameOver = false;
+    }
+    
+    void OnGameOver()
+    {
+        gameOver = true;
+    }
+
+    void OnGUI()
+    {
+        if (gameOver)
+        {
+            var leaderboard = new HandleScore().GetScore();
+
+            for (int i = 0; i < leaderboard.Count; i++)
+            {
+                GUI.Box(new Rect(100, 75 * i, 150, 50), i + ". " + leaderboard[i].name + " - " + leaderboard[i].score);
+            }
+        }
+    }
+}
+
 public class Score : IComparable<Score>
 {
     public string name;
@@ -18,7 +46,7 @@ public class HandleScore
 {
     public static List<Score> scoreIndex = new List<Score>(5);
 
-    private void GetScore()
+    public List<Score> GetScore()
     {
         if (PlayerPrefs.GetString("leaderboard") != "")
         {
@@ -26,15 +54,20 @@ public class HandleScore
 
             foreach (var item in arrRanking)
             {
-                var r = item.Split('&');
-
-                scoreIndex.Add(new Score
+                if (item != "")
                 {
-                    name = r[0],
-                    score = int.Parse(r[1])
-                });
+                    var r = item.Split('&');
+
+                    scoreIndex.Add(new Score
+                    {
+                        name = r[0].Substring(r[0].IndexOf('=') + 1, r[0].Length - (r[0].IndexOf('=') + 1)),
+                        score = int.Parse(r[1].Substring(r[1].IndexOf('=') + 1, r[1].Length - (r[1].IndexOf('=') + 1)))
+                    });
+                }
             }
         }
+
+        return scoreIndex;
     }
 
     public void AddScore(string name)
@@ -47,7 +80,7 @@ public class HandleScore
             score = ConfigurationScript.score
         });
 
-        scoreIndex.Sort();
+        scoreIndex.Reverse();
 
         // serialize
         string leaderboard = "";

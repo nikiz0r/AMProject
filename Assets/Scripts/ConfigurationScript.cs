@@ -3,7 +3,7 @@
 public class ConfigurationScript : MonoBehaviour {
 
     public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7
-        , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2;
+        , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2, DangerYPos = 1.7f, BixaoYStartPos = 20f;
     public static int score, bulletLimit = 3, victimsCollected;
 
     #region Player
