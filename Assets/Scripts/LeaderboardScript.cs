@@ -46,7 +46,6 @@ public class LeaderboardScript : MonoBehaviour {
         var gotHighScore = leaderboard.Where(x => x.name == "---");
         if (gotHighScore.Count() > 0)
         {
-            print(PlayerPrefs.GetString("leaderboard"));
             input.SetActive(true);
             input.transform.position = transform.Find("Names/Name" + gotHighScore.First().rank).position;
             transform.Find("Names/Name" + gotHighScore.First().rank).gameObject.SetActive(false);
