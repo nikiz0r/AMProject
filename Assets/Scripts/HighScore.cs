@@ -3,34 +3,6 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class HighScore : MonoBehaviour
-{
-    public bool gameOver;
-
-    void Start()
-    {
-        gameOver = false;
-    }
-    
-    void OnGameOver()
-    {
-        gameOver = true;
-    }
-
-    void OnGUI()
-    {
-        if (gameOver)
-        {
-            var leaderboard = new HandleScore().GetScore();
-
-            for (int i = 0; i < leaderboard.Count; i++)
-            {
-                GUI.Box(new Rect(100, 75 * i, 150, 50), i + ". " + leaderboard[i].name + " - " + leaderboard[i].score);
-            }
-        }
-    }
-}
-
 public class Score : IComparable<Score>
 {
     public string name;
@@ -48,6 +20,8 @@ public class HandleScore
 
     public List<Score> GetScore()
     {
+        List<Score> list = new List<Score>();
+
         if (PlayerPrefs.GetString("leaderboard") != "")
         {
             var arrRanking = PlayerPrefs.GetString("leaderboard").Split('|');
@@ -58,7 +32,7 @@ public class HandleScore
                 {
                     var r = item.Split('&');
 
-                    scoreIndex.Add(new Score
+                    list.Add(new Score
                     {
                         name = r[0].Substring(r[0].IndexOf('=') + 1, r[0].Length - (r[0].IndexOf('=') + 1)),
                         score = int.Parse(r[1].Substring(r[1].IndexOf('=') + 1, r[1].Length - (r[1].IndexOf('=') + 1)))
@@ -67,12 +41,12 @@ public class HandleScore
             }
         }
 
-        return scoreIndex;
+        return list;
     }
 
     public void AddScore(string name)
     {
-        GetScore();
+        scoreIndex = GetScore();
 
         scoreIndex.Add(new Score
         {

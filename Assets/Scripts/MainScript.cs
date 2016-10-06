@@ -48,7 +48,7 @@ public class MainScript : MonoBehaviour {
         // Player morreu
         if(playerScript == null)
         {
-            SceneManager.LoadScene("RankScene");
+            StartCoroutine(GameOver());
         }
 	}
 
@@ -122,5 +122,11 @@ public class MainScript : MonoBehaviour {
             dashFill.fillAmount = 0;
             playerScript.dashCount = 0;
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("RankScene");
     }
 }
