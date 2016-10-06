@@ -2,11 +2,13 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Score : IComparable<Score>
 {
     public string name;
     public int score;
+    public int rank;
 
     public int CompareTo(Score other)
     {
@@ -35,7 +37,8 @@ public class HandleScore
                     list.Add(new Score
                     {
                         name = r[0].Substring(r[0].IndexOf('=') + 1, r[0].Length - (r[0].IndexOf('=') + 1)),
-                        score = int.Parse(r[1].Substring(r[1].IndexOf('=') + 1, r[1].Length - (r[1].IndexOf('=') + 1)))
+                        score = int.Parse(r[1].Substring(r[1].IndexOf('=') + 1, r[1].Length - (r[1].IndexOf('=') + 1))),
+                        rank = int.Parse(r[2].Substring(r[2].IndexOf('=') + 1, r[2].Length - (r[2].IndexOf('=') + 1))),
                     });
                 }
             }
@@ -54,12 +57,16 @@ public class HandleScore
             score = ConfigurationScript.score
         });
 
-        scoreIndex.Reverse();
+        scoreIndex = scoreIndex.OrderByDescending(x => x.score).ToList();
 
         // serialize
         string leaderboard = "";
+        int rank = 0;
         foreach (var item in scoreIndex)
-            leaderboard += "n=" + item.name + "&s=" + item.score + "|";
+        {
+            leaderboard += "n=" + item.name + "&s=" + item.score + "&i=" + rank + "|";
+            rank++;
+        }
         
         PlayerPrefs.SetString("leaderboard", leaderboard);
     }
