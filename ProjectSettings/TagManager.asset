@@ -9,6 +9,7 @@ TagManager:
   - Explosion
   - Coin
   - Melee
+  - Boss
   layers:
   - Default
   - TransparentFX

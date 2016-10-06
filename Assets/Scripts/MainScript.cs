@@ -14,6 +14,7 @@ public class MainScript : MonoBehaviour {
     public Text score;
     public Image dashFill;
     private Player playerScript;
+    private HandleScore handleScore = new HandleScore();
 
     // Use this for initialization
     void Start () {
@@ -42,6 +43,13 @@ public class MainScript : MonoBehaviour {
         DashControl();
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
+        //dashFill.fillAmount = playerScript.dashCount / 3;
+
+        // Player morreu
+        if(playerScript == null)
+        {
+            StartCoroutine(GameOver());
+        }
 	}
 
     void SpawnEnemies()
@@ -114,5 +122,11 @@ public class MainScript : MonoBehaviour {
         else if (playerScript.dashCount < 1 && playerScript.dashCount > 0){
             dashFill.fillAmount = 0;
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("RankScene");
     }
 }
