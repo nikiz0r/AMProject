@@ -89,6 +89,8 @@ MonoBehaviour:
   handleVisibilityOnly: 0
   distanceX: 0
   distanceY: 0
+  baiacuP: {fileID: 21300000, guid: db32b783a3828314cbe161979b5cf5eb, type: 3}
+  baiacuG: {fileID: 21300000, guid: a535b5f6bd196c24bb703eabc37abe72, type: 3}
 --- !u!212 &212000011223298154
 SpriteRenderer:
   m_ObjectHideFlags: 1
