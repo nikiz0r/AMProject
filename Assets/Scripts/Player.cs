@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	 */
 
 	private float direction, jumpBoost;
-	private bool grounded, leftSide, jumped;
+	private bool grounded, jumped;
 	private int bulletLimit;
     public Transform groundCheck, gun;
     public LayerMask ground;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	private Transform playerTr;
     private MainScript mainScript;
     public bool movementBlock = false;
+    public bool leftSide;
 
     public bool shoalExists = false;
     public GameObject shoal;

@@ -97,6 +97,7 @@ public class MainScript : MonoBehaviour {
         {
             SceneManager.LoadScene("Main");
             Time.timeScale = 1;
+            ConfigurationScript.score = 0;
         }
 	}
 
