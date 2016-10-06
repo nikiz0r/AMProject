@@ -143,7 +143,6 @@ public class Player : MonoBehaviour {
         else if (dashCount >= 3){
             dashCount = 3;
         }
-        print(dashCount);
     }
 }
 
