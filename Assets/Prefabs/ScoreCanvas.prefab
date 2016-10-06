@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000014241572450
 GameObject:
   m_ObjectHideFlags: 1
@@ -614,6 +614,7 @@ MonoBehaviour:
   inputTextA: {fileID: 114000010192002082}
   inputTextB: {fileID: 114000010309585452}
   inputTextC: {fileID: 114000012946882078}
+  input: {fileID: 1000014187114200}
   index: 0
 --- !u!114 &114000011499535546
 MonoBehaviour:
