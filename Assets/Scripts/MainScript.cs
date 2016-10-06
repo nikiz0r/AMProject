@@ -105,6 +105,7 @@ public class MainScript : MonoBehaviour {
         {
             SceneManager.LoadScene("Main");
             Time.timeScale = 1;
+            ConfigurationScript.score = 0;
         }
 	}
 
@@ -118,9 +119,8 @@ public class MainScript : MonoBehaviour {
         else if (playerScript.dashCount > 1 && playerScript.dashCount < 2){
             dashFill.fillAmount = 0.33f;
         }
-        else if (playerScript.dashCount < 1){
+        else if (playerScript.dashCount < 1 && playerScript.dashCount > 0){
             dashFill.fillAmount = 0;
-            playerScript.dashCount = 0;
         }
     }
 
