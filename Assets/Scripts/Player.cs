@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     private MainScript mainScript;
     public bool movementBlock = false;
     public bool leftSide;
+    public ParticleSystem bubbles;
 
     public bool shoalExists = false;
     public GameObject shoal;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour {
         playerRb = GetComponent<Rigidbody2D>();
         playerTr = GetComponent<Transform>();
         InvokeRepeating("DashSum", 1, 1);
+        bubbles.Stop();
 	}
 	
 	void Update () {
@@ -46,6 +48,9 @@ public class Player : MonoBehaviour {
 		Shoot();
 		Dash();
 		MeleeAttack();
+        if (grounded){
+            bubbles.Play();
+        }
 	}
 
     void FixedUpdate(){
@@ -76,6 +81,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded) {
             playerRb.AddForce(new Vector2(0, ConfigurationScript.jumpForce));
 			jumped = true;
+            bubbles.Play();
         }
 		if (Input.GetButton("Jump") && jumped){
 			jumped = true;

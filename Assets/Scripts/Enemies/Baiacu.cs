@@ -6,15 +6,17 @@ public class Baiacu : BaseBehaviour {
     public float distanceX, distanceY;
     public Sprite baiacuP, baiacuG;
     private SpriteRenderer baiacuSr;
+    public GameObject baiacuBCg, baiacuBCp;
 
     // Use this for initialization
     public override void Start()
     {
-        transform.localScale = new Vector3(2, 2);
+        transform.localScale = new Vector3(3, 3);
         baiacuSr = GetComponent<SpriteRenderer>();
         baiacuSr.sprite = baiacuP;
         base.Start();
         playerScript = FindObjectOfType(typeof(Player)) as Player;
+        baiacuBCg.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +42,8 @@ public class Baiacu : BaseBehaviour {
         if (distanceX < 2.5 && distanceY < 2.5){
             transform.localScale = new Vector3(3, 3);
             baiacuSr.sprite = baiacuG;
+            baiacuBCg.SetActive(true);
+            baiacuBCp.SetActive(false);
         }
     }
 
