@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ConfigurationScript : MonoBehaviour {
 
-    public static float shoalTriggerPosition = -5, shoalAwakeXPosition = -8, baseMovement = 1, baseSpeed = 7
-        , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2, DangerYPos = 1.7f, BixaoYStartPos = 20f;
+    public static float shoalTriggerPosition = -7, shoalAwakeXPosition = -10, baseMovement = 1, baseSpeed = 7
+        , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2, DangerYPos = 1.7f, BixaoYStartPos = 20f
+        , difficultyUp = 15;
     public static int score, bulletLimit = 3, victimsCollected;
     public static List<string> charList = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -21,8 +22,8 @@ public class ConfigurationScript : MonoBehaviour {
     #endregion
 
     #region Coin
-    public static int regularCoinValue = 5;
-    public static int superCoinValue = 50;
+    public static int regularCoinValue = 20;
+    public static int superCoinValue = 100;
     #endregion
 
     #region Shoal
@@ -41,5 +42,11 @@ public class ConfigurationScript : MonoBehaviour {
     public static float coinSpawnTime = 8;
     public static float victimSpawnTime = 10;
     public static float dropZoneSpawnTime = 30;
+    #endregion
+
+    #region MonstersValue
+    public static int baiacuValue = 30;
+    public static int bombValue = 10;
+    public static int octopusValue = 30;
     #endregion
 }

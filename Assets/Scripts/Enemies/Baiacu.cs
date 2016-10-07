@@ -45,7 +45,17 @@ public class Baiacu : BaseBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Player")
-            Destroy(col.gameObject);
+        switch (col.tag)
+        {
+            case "Player":
+                    Destroy(col.gameObject);
+                    break;
+            case "Bullet":
+            case "Melee":
+                ConfigurationScript.score += ConfigurationScript.baiacuValue;
+                break;
+            default:
+                break;
+        }
     }
 }

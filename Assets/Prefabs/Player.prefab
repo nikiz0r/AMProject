@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.79, y: -3.55, z: 0}
+  m_LocalPosition: {x: -5, y: -3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -113,6 +113,7 @@ MonoBehaviour:
   bullet: {fileID: 1000014147868226, guid: ca3c2d25930a24621a952e90d6b82ea5, type: 2}
   melee: {fileID: 1000010723666026}
   movementBlock: 0
+  leftSide: 0
   shoalExists: 0
   shoal: {fileID: 1000013525957842, guid: be53bf27bca26e44abaad27e2c5d5e53, type: 2}
   dashCount: 3
