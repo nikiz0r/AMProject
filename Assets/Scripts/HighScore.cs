@@ -18,11 +18,9 @@ public class Score : IComparable<Score>
 
 public class HandleScore
 {
-    public static List<Score> scoreIndex = new List<Score>(5);
-
     public List<Score> GetScore()
     {
-        List<Score> list = new List<Score>();
+        List<Score> list = new List<Score>(5);
 
         if (PlayerPrefs.GetString("leaderboard") != "")
         {
@@ -49,7 +47,7 @@ public class HandleScore
 
     public void AddScore(string name)
     {
-        scoreIndex = GetScore();
+        List<Score> scoreIndex = GetScore();
 
         scoreIndex.Add(new Score
         {
@@ -61,13 +59,11 @@ public class HandleScore
 
         // serialize
         string leaderboard = "";
-        int rank = 0;
-        foreach (var item in scoreIndex)
+        for (int i = 0; i < scoreIndex.Count && i < 5; i++)
         {
-            leaderboard += "n=" + item.name + "&s=" + item.score + "&i=" + rank + "|";
-            rank++;
+            leaderboard += "n=" + scoreIndex[i].name + "&s=" + scoreIndex[i].score + "&i=" + i + "|";
         }
-        
+
         PlayerPrefs.SetString("leaderboard", leaderboard);
     }
 }

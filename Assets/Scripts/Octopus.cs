@@ -31,10 +31,18 @@ public class Octopus : BaseBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        switch (col.tag)
         {
-            Destroy(gameObject);
-            Destroy(col.gameObject);
+            case "Player":
+                Destroy(gameObject);
+                Destroy(col.gameObject);
+                break;
+            case "Bullet":
+            case "Melee":
+                ConfigurationScript.score += ConfigurationScript.octopusValue;
+                break;
+            default:
+                break;
         }
     }
 }
