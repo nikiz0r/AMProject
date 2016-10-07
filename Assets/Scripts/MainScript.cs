@@ -103,7 +103,7 @@ public class MainScript : MonoBehaviour {
 	public void Restart(){
         if (Input.GetButtonDown("Start") && paused)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("GameScene");
             Time.timeScale = 1;
             ConfigurationScript.score = 0;
         }
