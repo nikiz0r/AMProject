@@ -30,14 +30,17 @@ public class LeaderboardScript : MonoBehaviour {
 
         if (!resetLeaderboard)
         {
-            _handleScore.AddScore("---");
-
-            leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
-
-            for (int i = 0; i < leaderboard.Count; i++)
+            if (ConfigurationScript.score > 0)
             {
-                transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
-                transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
+                _handleScore.AddScore("---");
+
+                leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
+
+                for (int i = 0; i < leaderboard.Count; i++)
+                {
+                    transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
+                    transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
+                }
             }
         }
         else
@@ -72,8 +75,7 @@ public class LeaderboardScript : MonoBehaviour {
             index++;
         }
 
-        if (Input.anyKeyDown)
-            TextSwap();
+        TextSwap();
     }
 
     void ResetLeaderboard()
@@ -134,6 +136,7 @@ public class LeaderboardScript : MonoBehaviour {
         }
 
         var direction = Input.GetAxisRaw("Vertical");
+
         if (direction > 0)
         {
             if (typeIndex == 35)

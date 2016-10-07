@@ -32,6 +32,7 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
         InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
         InvokeRepeating("SpawnDropZones", ConfigurationScript.dropZoneSpawnTime, ConfigurationScript.dropZoneSpawnTime);
+        InvokeRepeating("DifficultyUp", ConfigurationScript.difficultyUp, ConfigurationScript.difficultyUp);
 
         paused = false;
     }
@@ -47,9 +48,7 @@ public class MainScript : MonoBehaviour {
 
         // Player morreu
         if(playerScript == null)
-        {
             StartCoroutine(GameOver());
-        }
 	}
 
     void SpawnEnemies()
@@ -128,5 +127,10 @@ public class MainScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("RankScene");
+    }
+
+    void DifficultyUp()
+    {
+        ConfigurationScript.baseSpeed += 1;
     }
 }

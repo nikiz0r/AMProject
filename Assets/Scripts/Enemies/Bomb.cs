@@ -33,6 +33,7 @@ public class Bomb : BaseBehaviour {
 
     void TriggerExplosion()
     {
+        ConfigurationScript.score += ConfigurationScript.bombValue;
         Instantiate(bombExplosion, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }

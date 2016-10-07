@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BombExplosion : MonoBehaviour {
+public class BombExplosion : BaseBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
         Destroy(gameObject, 1);
-	}
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -18,6 +16,7 @@ public class BombExplosion : MonoBehaviour {
         {
             case "Coin":
             case "Melee":
+            case "LimitsScene":
                 break;
             default:
                 Destroy(col.gameObject);
