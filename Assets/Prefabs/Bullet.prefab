@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f4d33ca80816409ad25458bc2dae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossLifeBar: {fileID: 114000012058231160, guid: 24bb571eeb67ff24c83b52d8fd7a0c91,
+    type: 2}
 --- !u!212 &212000013218425774
 SpriteRenderer:
   m_ObjectHideFlags: 1

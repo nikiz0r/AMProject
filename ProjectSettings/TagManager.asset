@@ -9,6 +9,8 @@ TagManager:
   - Explosion
   - Coin
   - Melee
+  - Boss
+  - LightArea
   layers:
   - Default
   - TransparentFX
