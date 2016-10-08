@@ -47,7 +47,6 @@ public class MainScript : MonoBehaviour {
         DashControl();
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
-        //dashFill.fillAmount = playerScript.dashCount / 3;
 
         // Player morreu
         if(playerScript == null)
@@ -114,6 +113,7 @@ public class MainScript : MonoBehaviour {
             SceneManager.LoadScene("GameScene");
             Time.timeScale = 1;
             ConfigurationScript.score = 0;
+			ConfigurationScript.victimsCollected = 0;
         }
 	}
 
