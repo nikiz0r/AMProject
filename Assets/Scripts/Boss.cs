@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour {
     {
         if (bossShCt.routIsRunning == false)
         {
-            if (transform.position.y >= 2.8)
+            if (transform.position.y >= 2)
             {
                 transform.Translate(new Vector3(0, -2f, 0));
             }
