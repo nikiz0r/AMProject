@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour {
     private Player playerScript;
 
     void Start(){
+        bossShCt = (BossShotControl)FindObjectOfType(typeof(BossShotControl));
         playerScript = (Player)FindObjectOfType(typeof(Player));
     }
+
+    private BossShotControl bossShCt;
 
     void Update(){
         IsVisible();
@@ -21,7 +25,11 @@ public class Bullet : MonoBehaviour {
 			Destroy (col.gameObject);
             Destroy(this.gameObject);
             break;
-		}
+        case "Boss":
+            bossShCt.bossHp -= 1;
+            Destroy(this.gameObject);
+            break;
+        }
 	}
 
     void IsVisible(){
