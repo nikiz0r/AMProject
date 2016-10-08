@@ -45,6 +45,7 @@ public class BossShotControl : MonoBehaviour {
     }
     IEnumerator MultiForw()
     {
+        moveCount = 0;
         fireRate = 0.12f;
         nextFire = 0.06f;
         zRotation = 0.1f;
@@ -146,7 +147,7 @@ public class BossShotControl : MonoBehaviour {
     }
     IEnumerator RotationR()
     {
-
+        moveCount = 0;
         fireRate = 0.08f;
         nextFire = 0.06f;
         zRotation = 0.3f;
@@ -154,9 +155,17 @@ public class BossShotControl : MonoBehaviour {
         routIsRunning = true;
         while (compTurn == false)
         {
-            angleLight.eulerAngles = new Vector3(0, 0, zRotation);
-            zRotation += -1f;
-            if (zRotation <= -359.9 || zRotation >= 359.9)
+            if (moveCount < 3)
+            {
+                angleLight.eulerAngles = new Vector3(0, 0, zRotation);
+                zRotation -= 1f;
+                if (zRotation <= -90 || zRotation >= 90)
+                {
+                    zRotation = 0.03f;
+                    moveCount += 1;
+                }
+            }
+            else
             {
                 compTurn = true;
                 isMoving = false;
@@ -168,6 +177,7 @@ public class BossShotControl : MonoBehaviour {
     }
     IEnumerator RotationL()
     {
+        moveCount = 0;
         fireRate = 0.08f;
         nextFire = 0.06f;
         zRotation = 0.3f;
@@ -175,9 +185,17 @@ public class BossShotControl : MonoBehaviour {
         routIsRunning = true;
         while (compTurn == false)
         {
-            angleLight.eulerAngles = new Vector3(0, 0, zRotation);
-            zRotation += 1f;
-            if (zRotation <= -359.9 || zRotation >= 359.9)
+            if (moveCount < 3)
+            {
+                angleLight.eulerAngles = new Vector3(0, 0, zRotation);
+                zRotation += 1f;
+                if (zRotation <= -90 || zRotation >= 90)
+                {
+                    zRotation = 0.03f;
+                    moveCount += 1;
+                }
+            }
+            else
             {
                 compTurn = true;
                 isMoving = false;

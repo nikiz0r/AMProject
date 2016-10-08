@@ -9,21 +9,26 @@ public class Oyster : MonoBehaviour {
     public GameObject perola;
     private float coolDown;
     public Vector2 recoil;
-    
+    private Vector2 direction;
     void Start()
     {
-        StartCoroutine(Move());
+        oysterSpeed = 20;
+        direction = new Vector2(-1, 0);
+        oysterRb = GetComponent<Rigidbody2D>();
+        //StartCoroutine(Move());
     }
 
     void Update()
     {
+        oysterRb.AddForce(new Vector2(direction.x * oysterSpeed, direction.y * oysterSpeed));
     }
+
 
     IEnumerator Move()
     {
         while (true)
         {
-            transform.position += new Vector3(3f, 0, 0);
+            
             //transform.Translate(oysterSpeed * Vector3.right * Time.deltaTime, Camera.main.transform);
             //Debug.Log(Time.time);
             yield return new WaitForSeconds(1f);
