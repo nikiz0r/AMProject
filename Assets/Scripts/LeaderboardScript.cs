@@ -33,14 +33,14 @@ public class LeaderboardScript : MonoBehaviour {
             if (ConfigurationScript.score > 0)
             {
                 _handleScore.AddScore("---");
+            }
 
-                leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
+            leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
 
-                for (int i = 0; i < leaderboard.Count; i++)
-                {
-                    transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
-                    transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
-                }
+            for (int i = 0; i < leaderboard.Count; i++)
+            {
+                transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
+                transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
             }
         }
         else
