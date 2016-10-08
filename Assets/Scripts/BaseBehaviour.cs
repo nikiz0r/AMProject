@@ -31,7 +31,8 @@ public class BaseBehaviour : MonoBehaviour {
 
             // se tem parent destroi ele tambem
             if (gameObject.transform.parent != null)
-                Destroy(gameObject.transform.parent.gameObject);
+                if (gameObject.transform.parent.childCount == 1)
+                    Destroy(gameObject.transform.parent.gameObject);
         }
     }
 

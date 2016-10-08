@@ -52,7 +52,7 @@ public class Victim : BaseBehaviour {
             ConfigurationScript.victimsCollected += 1;
             if (ConfigurationScript.victimsCollected <= 7)
             {
-                ConfigurationScript.playerSpeed = ConfigurationScript.playerBaseSpeed - ConfigurationScript.victimsCollected;
+                ConfigurationScript.playerSpeed = ConfigurationScript.playerBaseSpeed - ConfigurationScript.victimsCollected + 1;
                 ConfigurationScript.jumpForce = ConfigurationScript.baseJumpForce - ConfigurationScript.victimsCollected * 10;
                 ConfigurationScript.jumpBoost = ConfigurationScript.baseJumpBoost - ConfigurationScript.victimsCollected * 3;
                 }

@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
 public class Coin : BaseBehaviour {
-
+	private AudioSource coinSd;
     // Use this for initialization
     public override void Start()
     {
         base.Start();
+		coinSd = GetComponent<AudioSource> ();
+		coinSd.Stop ();
     }
 
     // Update is called once per frame
@@ -18,7 +20,8 @@ public class Coin : BaseBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+			coinSd.Play ();
+            Destroy(gameObject,0.1f);
             ConfigurationScript.score += ConfigurationScript.regularCoinValue;
         }
     }

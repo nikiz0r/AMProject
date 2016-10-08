@@ -10,7 +10,7 @@ TagManager:
   - Coin
   - Melee
   - Boss
-  - LightArea
+  - LimitsScene
   layers:
   - Default
   - TransparentFX
