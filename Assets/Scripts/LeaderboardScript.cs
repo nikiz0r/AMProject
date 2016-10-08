@@ -75,7 +75,7 @@ public class LeaderboardScript : MonoBehaviour {
             index++;
         }
 
-        TextSwap();
+        StartCoroutine(TextSwap());
     }
 
     void ResetLeaderboard()
@@ -118,7 +118,7 @@ public class LeaderboardScript : MonoBehaviour {
         inputEnd = true;
     }
 
-    void TextSwap()
+    IEnumerator TextSwap()
     {
         int typeIndex;
 
@@ -139,6 +139,7 @@ public class LeaderboardScript : MonoBehaviour {
 
         if (direction > 0)
         {
+            yield return new WaitForSeconds(0.3f);
             if (typeIndex == 35)
                 typeIndex = 0;
             else
@@ -146,6 +147,7 @@ public class LeaderboardScript : MonoBehaviour {
         }
         else if(direction < 0)
         {
+            yield return new WaitForSeconds(0.3f);
             if (typeIndex == 0)
                 typeIndex = 35;
             else
