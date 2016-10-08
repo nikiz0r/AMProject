@@ -49,4 +49,9 @@ public class ConfigurationScript : MonoBehaviour {
     public static int bombValue = 10;
     public static int octopusValue = 30;
     #endregion
+
+    #region Boss
+    public static int bossHitValue = 30;
+    public static int bossDeathValue = 10000;
+    #endregion
 }

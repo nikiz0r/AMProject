@@ -11,8 +11,10 @@ public class HudControl : MonoBehaviour {
     private Image playerSliderIm, bossSliderIm;
     public Slider bossSlider, playerSlider;
     private float playerPrevHp, bossPrevHp;
+    public Text score;
+
     // Use this for initialization
-	void Start () {
+    void Start () {
         playerBf = (PlayerBF)FindObjectOfType(typeof(PlayerBF));
         boss = (BossShotControl)FindObjectOfType(typeof(BossShotControl));
         playerPrevHp = playerBf.hp;
@@ -31,23 +33,38 @@ public class HudControl : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
+        score.text = string.Format("Score: {0}", ConfigurationScript.score);
+
         if (playerBf.hp == 0)
+            StartCoroutine(GameOver());
+        else if (boss.bossHp == 0)
         {
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine(Credits());
         }
-        if (boss.bossHp == 0)
-        {
-            SceneManager.LoadScene("Credits");
-        }
+
         if (playerBf.hp != playerPrevHp)
         {
             playerSlider.value = playerBf.hp;
             playerPrevHp = playerBf.hp;
         }
+
         if (boss.bossHp != bossPrevHp)
         {
             bossSlider.value -= 1;
             bossPrevHp = boss.bossHp;
         }
-	}
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("RankScene");
+    }
+
+    IEnumerator Credits()
+    {
+        yield return new WaitForSeconds(5);
+        ConfigurationScript.score += ConfigurationScript.bossDeathValue;
+        SceneManager.LoadScene("Credits");
+    }
 }
