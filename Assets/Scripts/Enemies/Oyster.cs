@@ -23,16 +23,24 @@ public class Oyster : MonoBehaviour {
     {
         while (true)
         {
-            transform.position += new Vector3(3f, 0, 0);
+            transform.position += new Vector3(-3f, 0, 0);
             //transform.Translate(oysterSpeed * Vector3.right * Time.deltaTime, Camera.main.transform);
             //Debug.Log(Time.time);
             yield return new WaitForSeconds(1f);
         }
     }
 
-    /*
-    // Use this for initialization
-	void Start () {
+	void OnTriggerEnter2D(Collider2D col){
+		switch (col.tag)
+		{
+		case "Player":
+			Destroy(gameObject);
+			Destroy(col.gameObject);
+			break;
+		}
+	}
+		
+/*	void Start () {
 
         playerScript = FindObjectOfType(typeof(Player)) as Player;
         oysterRb = GetComponent<Rigidbody2D>();
@@ -43,7 +51,6 @@ public class Oyster : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
 	void Update () {
         Shoot();
     }
@@ -76,7 +83,5 @@ public class Oyster : MonoBehaviour {
     void Move()
     {
         transform.Translate(oysterSpeed * Vector3.right * Time.deltaTime, Camera.main.transform);
-    }
-    */
-  
+    }*/
 }
