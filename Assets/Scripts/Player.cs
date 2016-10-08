@@ -23,19 +23,25 @@ public class Player : MonoBehaviour {
     public bool movementBlock = false;
     public bool leftSide;
     public ParticleSystem bubbles;
+	private AudioSource jumpSound;
 
     public bool shoalExists = false;
     public GameObject shoal;
 
     public float dashCount = 3;
 
+	void Awake(){
+		bubbles.Stop();
+	}
+
     void Start () {
+		jumpSound = GetComponent<AudioSource> ();
         mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
         playerRb = GetComponent<Rigidbody2D>();
         playerTr = GetComponent<Transform>();
         InvokeRepeating("DashSum", 1, 1);
-        bubbles.Stop();
+		jumpSound.Stop ();
 	}
 	
 	void Update () {
@@ -82,6 +88,7 @@ public class Player : MonoBehaviour {
             playerRb.AddForce(new Vector2(0, ConfigurationScript.jumpForce));
 			jumped = true;
             bubbles.Play();
+			jumpSound.Play ();
         }
 		if (Input.GetButton("Jump") && jumped){
 			jumped = true;
