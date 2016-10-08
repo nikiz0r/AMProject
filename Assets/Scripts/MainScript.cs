@@ -9,11 +9,16 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public GameObject VictimGO;
+    public GameObject DropZoneGO;
 	public bool paused;
     public Text score;
+    public Image dashFill;
+    private Player playerScript;
+    private HandleScore handleScore = new HandleScore();
 
     // Use this for initialization
     void Start () {
+        playerScript = (Player)FindObjectOfType(typeof(Player));
         var PrefabsGOs = Resources.LoadAll("Prefabs", typeof(GameObject));
         var CoinGOs = Resources.LoadAll("CoinPatterns", typeof(GameObject));
 
@@ -26,6 +31,8 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
         InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
         InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
+        InvokeRepeating("SpawnDropZones", ConfigurationScript.dropZoneSpawnTime, ConfigurationScript.dropZoneSpawnTime);
+        InvokeRepeating("DifficultyUp", ConfigurationScript.difficultyUp, ConfigurationScript.difficultyUp);
 
         paused = false;
     }
@@ -33,8 +40,15 @@ public class MainScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Pause ();
+        Restart();
+        DashControl();
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
+        //dashFill.fillAmount = playerScript.dashCount / 3;
+
+        // Player morreu
+        if(playerScript == null)
+            StartCoroutine(GameOver());
 	}
 
     void SpawnEnemies()
@@ -69,18 +83,54 @@ public class MainScript : MonoBehaviour {
         Instantiate(VictimGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), VictimGO.transform.rotation);
     }
 
+    void SpawnDropZones()
+    {
+        Instantiate(DropZoneGO, new Vector2(8f, Random.Range(ConfigurationScript.minSpawnYPosition, ConfigurationScript.maxSpawnYPosition)), DropZoneGO.transform.rotation);
+    }
+
     void Pause(){
-		if (Input.GetKeyDown(KeyCode.P) && paused == false) {
+		if (Input.GetButtonDown("Pause") && paused == false) {
 			Time.timeScale = 0;
 			paused = true;
 		}
-		else if (Input.GetKeyDown(KeyCode.P) && paused == true) {
+		else if (Input.GetButtonDown("Pause") && paused == true) {
 			Time.timeScale = 1;
 			paused = false;
 		}
 	}
 
 	public void Restart(){
-        SceneManager.LoadScene("main");
+        if (Input.GetButtonDown("Start") && paused)
+        {
+            SceneManager.LoadScene("GameScene");
+            Time.timeScale = 1;
+            ConfigurationScript.score = 0;
+        }
 	}
+
+    void DashControl(){
+        if (playerScript.dashCount == 3){
+            dashFill.fillAmount = 1;
+        }
+        else if (playerScript.dashCount > 2 && playerScript.dashCount < 3){
+            dashFill.fillAmount = 0.66f;
+        }
+        else if (playerScript.dashCount > 1 && playerScript.dashCount < 2){
+            dashFill.fillAmount = 0.33f;
+        }
+        else if (playerScript.dashCount < 1 && playerScript.dashCount > 0){
+            dashFill.fillAmount = 0;
+        }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("RankScene");
+    }
+
+    void DifficultyUp()
+    {
+        ConfigurationScript.baseSpeed += 1;
+    }
 }

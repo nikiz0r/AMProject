@@ -1,38 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Octopus : MonoBehaviour {
+public class Octopus : BaseBehaviour {
 
-    public float octoSpeed;
     private float coolDown;
-    private Rigidbody2D octoRb;
     public GameObject tinta;
 
     // Use this for initialization
-	void Start () {
-        octoRb = GetComponent<Rigidbody2D>();
-        coolDown = 1;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        Move();
-        Shoot();
-	}
-
-    void Move()
+    public override void Start()
     {
-        octoRb.velocity = new Vector3(octoSpeed, 0, 0);
+        base.Start();
+        coolDown = 1;
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
+        Shoot();
     }
 
     void Shoot()
     {
         if (Time.time >= coolDown)
         {
-            //GameObject tintatiro = (GameObject)Instantiate(tinta, transform.position, transform.rotation);
-            //tintatiro.GetComponent<Rigidbody2D>().velocity = new Vector3(octoSpeed*2, 0);
             Instantiate(tinta, transform.position, transform.rotation);
             coolDown = Time.time + Random.Range(3, 5);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        switch (col.tag)
+        {
+            case "Player":
+                Destroy(gameObject);
+                Destroy(col.gameObject);
+                break;
+            case "Bullet":
+            case "Melee":
+                ConfigurationScript.score += ConfigurationScript.octopusValue;
+                break;
+            default:
+                break;
         }
     }
 }

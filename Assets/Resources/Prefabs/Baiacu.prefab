@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000010890186704}
   m_IsPrefabParent: 1
+--- !u!1 &1000010556044352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013404426848}
+  - 61: {fileID: 61000010758764164}
+  m_Layer: 0
+  m_Name: G
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000010890186704
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,7 +38,7 @@ GameObject:
   - 212: {fileID: 212000011223298154}
   - 50: {fileID: 50000013792887546}
   - 114: {fileID: 114000012865538392}
-  - 61: {fileID: 61000011912209128}
+  - 61: {fileID: 61000011465322150}
   m_Layer: 0
   m_Name: Baiacu
   m_TagString: enemy1
@@ -30,6 +46,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012591414066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010102660190}
+  - 61: {fileID: 61000013423261106}
+  m_Layer: 0
+  m_Name: P
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010102660190
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012591414066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013532024200}
+  m_RootOrder: 0
+--- !u!4 &4000013404426848
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010556044352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013532024200}
+  m_RootOrder: 1
 --- !u!4 &4000013532024200
 Transform:
   m_ObjectHideFlags: 1
@@ -37,10 +95,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010890186704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7002516, y: -2.9170527, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.86, y: -3.59, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000010102660190}
+  - {fileID: 4000013404426848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &50000013792887546
@@ -60,7 +120,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61000011912209128
+--- !u!61 &61000010758764164
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010556044352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.019824266, y: 0.019824505}
+  serializedVersion: 2
+  m_Size: {x: 0.56386197, y: 0.57519025}
+--- !u!61 &61000011465322150
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -74,6 +148,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
+--- !u!61 &61000013423261106
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012591414066}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.00000007947286}
+  serializedVersion: 2
+  m_Size: {x: 0.1970861, y: 0.20590875}
 --- !u!114 &114000012865538392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +177,10 @@ MonoBehaviour:
   handleVisibilityOnly: 0
   distanceX: 0
   distanceY: 0
+  baiacuP: {fileID: 21300000, guid: db32b783a3828314cbe161979b5cf5eb, type: 3}
+  baiacuG: {fileID: 21300000, guid: a535b5f6bd196c24bb703eabc37abe72, type: 3}
+  baiacuBCg: {fileID: 1000010556044352}
+  baiacuBCp: {fileID: 1000012591414066}
 --- !u!212 &212000011223298154
 SpriteRenderer:
   m_ObjectHideFlags: 1
