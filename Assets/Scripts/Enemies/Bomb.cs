@@ -21,9 +21,12 @@ public class Bomb : BaseBehaviour {
     {
         switch (col.transform.tag)
         {
-            case "Bullet":
             case "Player":
+                TriggerExplosion();
+                break;
+            case "Bullet":
             case "Melee":
+                ConfigurationScript.score += ConfigurationScript.bombValue;
                 TriggerExplosion();
                 break;
             default:
@@ -32,8 +35,7 @@ public class Bomb : BaseBehaviour {
     }
 
     void TriggerExplosion()
-    {
-        ConfigurationScript.score += ConfigurationScript.bombValue;
+    {   
         Instantiate(bombExplosion, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }

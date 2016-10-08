@@ -120,11 +120,13 @@ public class Player : MonoBehaviour {
     }
 
 	void Dash(){
+        var vertiDir = Input.GetAxisRaw("Vertical");
+
         if (Input.GetButtonDown("Fire2") && !mainScript.paused && !movementBlock && dashCount > 0) {
 			if (leftSide == false)
-				playerRb.AddForce (new Vector2 (ConfigurationScript.dashForce, 0));
+				playerRb.AddForce (new Vector2 (ConfigurationScript.dashForce, ConfigurationScript.dashForce * vertiDir));
 			else if (leftSide == true)
-				playerRb.AddForce (new Vector2 (-ConfigurationScript.dashForce, 0));
+				playerRb.AddForce (new Vector2 (-ConfigurationScript.dashForce, ConfigurationScript.dashForce * vertiDir));
             dashCount--;
 		}
 	}
