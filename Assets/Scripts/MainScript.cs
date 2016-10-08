@@ -105,6 +105,7 @@ public class MainScript : MonoBehaviour {
             SceneManager.LoadScene("GameScene");
             Time.timeScale = 1;
             ConfigurationScript.score = 0;
+			ConfigurationScript.victimsCollected = 0;
         }
 	}
 
