@@ -18,8 +18,10 @@ public class BombExplosion : BaseBehaviour {
             case "Melee":
             case "LimitsScene":
                 break;
-            default:
+            case "Player":
                 Destroy(col.gameObject);
+                break;
+            default:
                 break;
         }
     }
