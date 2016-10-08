@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BossBullet : MonoBehaviour {
 
@@ -32,8 +33,12 @@ public class BossBullet : MonoBehaviour {
         switch (col.gameObject.tag)
         {
             case "Player":
-                Destroy(gameObject);
-                playerBf.hp -= 1;
+                if (playerBf.isVulnerable)
+                {
+                    Destroy(gameObject);
+                    playerBf.hp -= 1;
+                    playerBf.isVulnerable = false;
+                }
                 break;
             case "Bullet":
                 Destroy(gameObject);

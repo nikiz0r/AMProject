@@ -52,8 +52,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012682979892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.14, y: -0.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.15, y: -0.25, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013338343878}
@@ -114,10 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d297ae31df5b72439e61ba3321f8ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  bulletLimit: 0
   bfGun: {fileID: 4000013338343878}
+  startPoint: {fileID: 4000013183789678, guid: 9d9c000ad2feaa94594c508352521964, type: 2}
   bullet: {fileID: 1000014147868226, guid: ca3c2d25930a24621a952e90d6b82ea5, type: 2}
+  prevHp: 0
+  hp: 0
+  isVulnerable: 0
+  isParalyzed: 0
+  opacity: 0
+  invOpacity: 0
+  hearts: {fileID: 1000012379033690, guid: ea7bc651b255d7a4d92fabf2917a5e4b, type: 2}
 --- !u!212 &212000012753738092
 SpriteRenderer:
   m_ObjectHideFlags: 1

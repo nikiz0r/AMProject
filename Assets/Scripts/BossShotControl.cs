@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BossShotControl : MonoBehaviour {
 
@@ -10,16 +11,15 @@ public class BossShotControl : MonoBehaviour {
     private Rigidbody2D bossControlRb;
     private Transform angleLight;
     private float zRotation = 0.1f;
-    private float zRotation2 = -0.1f;
     private float angleRotation = 1f;
     private float angleRotation2 = -1f;
-    private Vector3 initialAngle;
     private bool compTurn = false;
     private bool isMoving = false;
     public bool routIsRunning = false;
     private float endTime, angleCount;
     private int moveCount;
-    public int bossHp;
+    public float bossHp, prevHp;
+    public Slider bossSlider;
 
     private List<string> routList = new List<string>();
 
@@ -28,10 +28,11 @@ public class BossShotControl : MonoBehaviour {
     void Awake()
     {
         angleLight = GetComponent<Transform>();
-        initialAngle = new Vector3(0, 0, 0);
     }
     void Start () {
+        bossSlider = GetComponent<Slider>();
         bossHp = 30;
+        prevHp = bossHp;
         bossControlRb = GetComponent<Rigidbody2D>();
         moveCount = 0;
         angleLight.eulerAngles = new Vector3(0, 0, zRotation);
