@@ -4,11 +4,10 @@ using UnityEngine.UI;
 public class Bullet : MonoBehaviour {
 
     private BossShotControl bossShCt;
-    //private Slider bossSlider;
+
     void Start()
     {
         bossShCt = (BossShotControl)FindObjectOfType(typeof(BossShotControl));
-        //bossSlider = (Slider)FindObjectOfType(typeof(Slider));
     }
     void Update(){
         IsVisible();
@@ -22,7 +21,6 @@ public class Bullet : MonoBehaviour {
             break;
         case "Boss":
             bossShCt.bossHp -= 1;
-            //bossSlider.value -= 1;
             Destroy(this.gameObject);
             break;
         }
