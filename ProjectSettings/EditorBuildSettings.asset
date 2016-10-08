@@ -6,12 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-  - enabled: 1
     path: Assets/Scenes/BossFight.unity
   - enabled: 1
     path: Assets/Scenes/Credits.unity
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
   - enabled: 1
-    path: Assets/Scenes/RankScene.unity
+    path: Assets/Scenes/Main.unity
