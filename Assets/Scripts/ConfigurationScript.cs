@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ConfigurationScript : MonoBehaviour {
 
-    public static float shoalTriggerPosition = -7, shoalAwakeXPosition = -10, baseMovement = 1, baseSpeed = 7
+    public static float shoalTriggerPosition = -7, shoalAwakeXPosition = -10.3f, baseMovement = 1, baseSpeed = 7
         , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2, DangerYPos = 1.7f, BixaoYStartPos = 20f
         , difficultyUp = 15;
     public static int score, bulletLimit = 3, victimsCollected;
