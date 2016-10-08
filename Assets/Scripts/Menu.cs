@@ -11,4 +11,8 @@ public class Menu : MonoBehaviour {
 	public void RankBt(){
 		SceneManager.LoadScene("RankScene");
 	}
+
+	public void MenuS(){
+		SceneManager.LoadScene("Menu");
+	}
 }
