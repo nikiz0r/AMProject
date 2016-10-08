@@ -40,6 +40,7 @@ GameObject:
   - 61: {fileID: 61000013226215550}
   - 114: {fileID: 114000013980723734}
   - 50: {fileID: 50000010342075476}
+  - 95: {fileID: 95000010755999444}
   m_Layer: 0
   m_Name: Victim
   m_TagString: Untagged
@@ -105,6 +106,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.7, y: 0.4}
+--- !u!95 &95000010755999444
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012541022552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a722a09d4c8748388ae3d6cf7bee1ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000013980723734
 MonoBehaviour:
   m_ObjectHideFlags: 1
