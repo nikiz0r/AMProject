@@ -38,8 +38,8 @@ GameObject:
   - 4: {fileID: 4000010678177860}
   - 212: {fileID: 212000013462318680}
   - 50: {fileID: 50000013433606624}
-  - 61: {fileID: 61000010092565384}
   - 114: {fileID: 114000013415343256}
+  - 61: {fileID: 61000010846026006}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -184,20 +184,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!61 &61000010092565384
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012405095646}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.722651, y: -0.47373748}
-  serializedVersion: 2
-  m_Size: {x: 3.054697, y: 3.552525}
 --- !u!61 &61000010324741436
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -212,6 +198,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
+--- !u!61 &61000010846026006
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012405095646}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.72694254, y: -0.48462868}
+  serializedVersion: 2
+  m_Size: {x: 3.046115, y: 3.5307426}
 --- !u!114 &114000013415343256
 MonoBehaviour:
   m_ObjectHideFlags: 1

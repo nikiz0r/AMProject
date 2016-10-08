@@ -40,10 +40,6 @@ public class BossBullet : MonoBehaviour {
                     playerBf.isVulnerable = false;
                 }
                 break;
-            case "Bullet":
-                Destroy(gameObject);
-                Destroy(col.gameObject);
-                break;
         }
     }
 }

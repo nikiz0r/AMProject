@@ -14,8 +14,12 @@ public class Bullet : MonoBehaviour {
     void Update(){
         IsVisible();
 
-        if (playerScript.leftSide){
-            transform.localScale = new Vector3(-1, 1, 1);
+        if (playerScript != null)
+        {
+            if (playerScript.leftSide)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
     }
 	
