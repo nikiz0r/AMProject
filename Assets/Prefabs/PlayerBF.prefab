@@ -123,7 +123,6 @@ MonoBehaviour:
   isParalyzed: 0
   opacity: 0
   invOpacity: 0
-  hearts: {fileID: 1000012379033690, guid: ea7bc651b255d7a4d92fabf2917a5e4b, type: 2}
 --- !u!212 &212000012753738092
 SpriteRenderer:
   m_ObjectHideFlags: 1

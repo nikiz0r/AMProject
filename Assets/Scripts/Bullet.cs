@@ -31,6 +31,7 @@ public class Bullet : MonoBehaviour {
             break;
         case "Boss":
             bossShCt.bossHp -= 1;
+            ConfigurationScript.score += ConfigurationScript.bossHitValue;
             Destroy(this.gameObject);
             break;
         }
