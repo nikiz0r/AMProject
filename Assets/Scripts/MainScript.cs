@@ -14,12 +14,10 @@ public class MainScript : MonoBehaviour {
     public Text score;
     public Image dashFill;
     private Player playerScript;
-    private float gameTime;
     private HandleScore handleScore = new HandleScore();
 
     // Use this for initialization
     void Start () {
-        gameTime = (Time.time + 30f);
         playerScript = (Player)FindObjectOfType(typeof(Player));
         var PrefabsGOs = Resources.LoadAll("Prefabs", typeof(GameObject));
         var CoinGOs = Resources.LoadAll("CoinPatterns", typeof(GameObject));
@@ -41,7 +39,6 @@ public class MainScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        EndGame();
         Pause ();
         Restart();
         DashControl();
@@ -51,13 +48,13 @@ public class MainScript : MonoBehaviour {
         // Player morreu
         if(playerScript == null)
             StartCoroutine(GameOver());
-	}
+        else
+            EndGame();
+    }
     void EndGame()
     {
-        if (Time.time >= gameTime)
-        {
+        if (Time.time >= ConfigurationScript.EnterBossFight)
             SceneManager.LoadScene("BossFight");
-        }
     }
     void SpawnEnemies()
     {
