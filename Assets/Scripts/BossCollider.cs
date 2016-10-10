@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BossCollider : MonoBehaviour {
     private PlayerBF playerBf;

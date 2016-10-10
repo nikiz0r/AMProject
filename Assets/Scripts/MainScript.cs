@@ -8,13 +8,11 @@ public class MainScript : MonoBehaviour {
 
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
-    public GameObject VictimGO;
-    public GameObject DropZoneGO;
+    public GameObject VictimGO, DropZoneGO;
 	public bool paused;
     public Text score;
     public Image dashFill;
     private Player playerScript;
-    private HandleScore handleScore = new HandleScore();
 
     // Use this for initialization
     void Start () {

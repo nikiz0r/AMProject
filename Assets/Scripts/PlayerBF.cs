@@ -9,7 +9,7 @@ public class PlayerBF : MonoBehaviour {
     public Transform bfGun, startPoint;
     public GameObject bullet;
     private SpriteRenderer playerSp;
-    private float directionX, directionY, speed, bulletSpeed, invTime, oldOpacity;
+    private float directionX, directionY, speed, bulletSpeed, invTime;
     public float prevHp, hp;
     private int bulletLimit;
     public bool isVulnerable, isParalyzed;
