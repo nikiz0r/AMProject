@@ -4,11 +4,14 @@ using System.Collections;
 public class DropZone : BaseBehaviour {
 
     private bool RescueActivated = false;
+	private AudioSource rescueSound;
 
     // Use this for initialization
     public override void Start()
     {
         base.Start();
+		rescueSound = GetComponent<AudioSource> ();
+		rescueSound.Stop ();
     }
 
     // Update is called once per frame
@@ -50,8 +53,8 @@ public class DropZone : BaseBehaviour {
             yield return new WaitForSecondsRealtime(0.02f);
             ConfigurationScript.score += x;
             points -= x;
+			rescueSound.Play ();
         }
-
         Time.timeScale = 1;
     }
 }
