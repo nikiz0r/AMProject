@@ -4,12 +4,9 @@ using System.Collections;
 public class Tinta : MonoBehaviour {
 
 	public GameObject mancha;
-    private BoxCollider2D tintaBc;
     private Rigidbody2D tintaRb;
-    
 
 	void Start () {
-        tintaBc = GetComponent<BoxCollider2D>();
         tintaRb = GetComponent<Rigidbody2D>();
         tintaRb.velocity = new Vector3(-20, 0);
 	}

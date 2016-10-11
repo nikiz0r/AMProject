@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour {
     private List<Vector3> moveArray = new List<Vector3>();
     private BossShotControl bossShCt;
+    
     // Use this for initialization
     void Start()
     {
@@ -19,17 +20,11 @@ public class Boss : MonoBehaviour {
         if (bossShCt.routIsRunning == false)
         {
             if (transform.position.y >= 2)
-            {
                 transform.Translate(new Vector3(0, -2f, 0));
-            }
             else if (transform.position.y <= -2.7)
-            {
                 transform.Translate(new Vector3(0, 2f, 0));
-            }
             else
-            {
                 transform.Translate(moveArray[Random.Range(0, moveArray.Count)]);
-            }
         }
     }
 }
