@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 public class BossBullet : MonoBehaviour {
 
-    //public Transform controlTr;
     private Rigidbody2D bulletRb;
     public float speed;
-    private Transform bulletTr;
     private PlayerBF playerBf;
+
     // Use this for initialization
 	void Start () {
         bulletRb = GetComponent<Rigidbody2D>();
-        bulletTr = GetComponent<Transform>();
         playerBf = (PlayerBF)FindObjectOfType(typeof(PlayerBF));
 	}
 	
@@ -24,9 +20,7 @@ public class BossBullet : MonoBehaviour {
     void IsVisible()
     {
         if (!GetComponent<Renderer>().isVisible)
-        {
-            Destroy(this.gameObject);
-        }
+            Destroy(gameObject);
     }
     void OnTriggerEnter2D(Collider2D col)
     {
