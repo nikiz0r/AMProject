@@ -9,13 +9,14 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> spawnList = new List<GameObject>();
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public GameObject VictimGO, DropZoneGO;
-	public bool paused;
-    public Text score;
+	public bool paused, dangerTimeVisibility, dangerFadeIn = false;
+    public Text score, dangerTime;
     public Image dashFill;
     private Player playerScript;
 
     // Use this for initialization
     void Start () {
+        dangerTimeVisibility = false;
         playerScript = (Player)FindObjectOfType(typeof(Player));
         var PrefabsGOs = Resources.LoadAll("Prefabs", typeof(GameObject));
         var CoinGOs = Resources.LoadAll("CoinPatterns", typeof(GameObject));
@@ -43,12 +44,28 @@ public class MainScript : MonoBehaviour {
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
 
+        if (Time.time >= ConfigurationScript.DangerTime && !dangerTimeVisibility)
+            TriggerDanger();
+
         // Player morreu
-        if(playerScript == null)
+        if (playerScript == null)
             StartCoroutine(GameOver());
         else
             EndGame();
     }
+
+    void TriggerDanger()
+    {
+        dangerTimeVisibility = true;
+        InvokeRepeating("BlinkDanger", 0, 0.3f);
+    }
+
+    void BlinkDanger()
+    {
+        dangerFadeIn = !dangerFadeIn;
+        dangerTime.gameObject.SetActive(dangerFadeIn);
+    }
+
     void EndGame()
     {
         if (Time.time >= ConfigurationScript.EnterBossFight)
