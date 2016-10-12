@@ -29,23 +29,18 @@ public class LeaderboardScript : MonoBehaviour {
             });
         }
 
-        if (!resetLeaderboard)
+        if (ConfigurationScript.score > 0)
         {
-            if (ConfigurationScript.score > 0)
-            {
-                _handleScore.AddScore("---");
-            }
-
-            leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
-
-            for (int i = 0; i < leaderboard.Count; i++)
-            {
-                transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
-                transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
-            }
+            _handleScore.AddScore("---");
         }
-        else
-            ResetLeaderboard();
+
+        leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
+
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
+            transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
+        }
 
         var gotHighScore = leaderboard.Where(x => x.name == "---");
         if (gotHighScore.Count() > 0)
@@ -67,6 +62,12 @@ public class LeaderboardScript : MonoBehaviour {
         else
             actionText.text = "Confirm";
 
+        if (Input.GetButtonDown("Jump") && finishedTyping)
+        {
+            ConfigurationScript.score = 0;
+            SceneManager.LoadScene("IntroScene");
+        }
+
         if (Input.GetButtonDown("Jump") && index <= 2)
         {
             switch (index)
@@ -84,16 +85,11 @@ public class LeaderboardScript : MonoBehaviour {
             }
             index++;
         }
-        else
-        {
-            if (Input.GetButton("Jump"))
-            {
-                ConfigurationScript.score = 0;
-                SceneManager.LoadScene("IntroScene");
-            }
-        }
 
         StartCoroutine(TextSwap());
+
+        if (Input.GetKey(KeyCode.F12))
+            ResetLeaderboard();
     }
 
     void ResetLeaderboard()
