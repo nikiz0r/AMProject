@@ -88,7 +88,7 @@ public class PlayerBF : MonoBehaviour {
         {
             directionX = Input.GetAxisRaw("Horizontal");
             directionY = Input.GetAxisRaw("Vertical");
-            playerBFRb.velocity = new Vector3(directionX * speed, directionY * speed, 0);
+            playerBFRb.velocity = new Vector3(directionX * speed, directionY * speed);
         }
         else
         {
