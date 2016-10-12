@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class HudControl : MonoBehaviour {
 
     public PlayerBF playerBf;
     public BossShotControl boss;
-    private Image playerSliderIm, bossSliderIm;
     public Slider bossSlider, playerSlider;
     private float playerPrevHp, bossPrevHp;
     public Text score;
@@ -20,8 +18,7 @@ public class HudControl : MonoBehaviour {
         playerPrevHp = playerBf.hp;
         bossPrevHp = boss.bossHp;
         ResetValues();
-        
-	}
+    }
     void ResetValues()
     {
         bossSlider.maxValue = 30;
