@@ -71,9 +71,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.35, y: -0.35}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.33
 --- !u!114 &114000010472216664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,8 +86,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerBar: {fileID: 114000014173551910, guid: 337bb39f5320da74493f058678d21d67,
-    type: 2}
 --- !u!212 &212000010516625402
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5fe6de8f9b1f604a961f1098c9f6d5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17b7fb08357bd3b4fb8c184b45eace8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

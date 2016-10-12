@@ -52,6 +52,11 @@ public class MainScript : MonoBehaviour {
             StartCoroutine(GameOver());
         else
             EndGame();
+
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            SceneManager.LoadScene("BossFight");
+        }
     }
 
     void TriggerDanger()
