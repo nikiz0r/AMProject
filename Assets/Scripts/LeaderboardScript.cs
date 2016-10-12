@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardScript : MonoBehaviour {
 
     private HandleScore _handleScore = new HandleScore();
     private bool resetLeaderboard = false; // CUIDADO AQUI
-    public bool fadeIn = true, inputEndA = false, inputEndB = false, inputEndC = false, finishedTyping = false;
-    public Text inputTextA, inputTextB, inputTextC;
+    public bool fadeIn = true, inputEndA = false, inputEndB = false, inputEndC = false, finishedTyping = true;
+    public Text inputTextA, inputTextB, inputTextC, actionText;
     public GameObject input;
     public int index = 0;
     public List<TypeValue> typeList = new List<TypeValue>();
@@ -49,15 +50,23 @@ public class LeaderboardScript : MonoBehaviour {
         var gotHighScore = leaderboard.Where(x => x.name == "---");
         if (gotHighScore.Count() > 0)
         {
+            finishedTyping = false;
             input.SetActive(true);
             input.transform.position = transform.Find("Names/Name" + gotHighScore.First().rank).position;
             transform.Find("Names/Name" + gotHighScore.First().rank).gameObject.SetActive(false);
             InvokeRepeating("BlinkText", 0, 0.3f);
         }
+        else
+            finishedTyping = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (finishedTyping)
+            actionText.text = "Back to menu";
+        else
+            actionText.text = "Confirm";
+
         if (Input.GetButtonDown("Jump") && index <= 2)
         {
             switch (index)
@@ -68,11 +77,20 @@ public class LeaderboardScript : MonoBehaviour {
                 case 1:
                     EndInputBlink(ref inputEndB);
                     break;
-                default:
+                case 2:
                     EndInputBlink(ref inputEndC);
+                    finishedTyping = true;
                     break;
             }
             index++;
+        }
+        else
+        {
+            if (Input.GetButton("Jump"))
+            {
+                ConfigurationScript.score = 0;
+                SceneManager.LoadScene("IntroScene");
+            }
         }
 
         StartCoroutine(TextSwap());
