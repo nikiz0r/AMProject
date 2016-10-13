@@ -46,7 +46,7 @@ public class MainScript : MonoBehaviour {
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
 
-        if (Time.time >= ConfigurationScript.DangerTime && !dangerTimeVisibility)
+        if (Time.timeSinceLevelLoad >= ConfigurationScript.DangerTime && !dangerTimeVisibility)
             TriggerDanger();
 
         // Player morreu
@@ -75,7 +75,7 @@ public class MainScript : MonoBehaviour {
 
     void EndGame()
     {
-        if (Time.time >= ConfigurationScript.EnterBossFight)
+        if (Time.timeSinceLevelLoad >= ConfigurationScript.EnterBossFight)
             SceneManager.LoadScene("BossFight");
     }
     void SpawnEnemies()
