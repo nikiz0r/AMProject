@@ -14,11 +14,9 @@ public class LeaderboardScript : MonoBehaviour {
     public GameObject input;
     public int index = 0;
     public List<TypeValue> typeList = new List<TypeValue>();
-    private MainScript mainScript;
 
     // Use this for initialization
     void Start () {
-        mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
         List<Score> leaderboard = new List<Score>();
 
         // feed typeList
@@ -66,7 +64,7 @@ public class LeaderboardScript : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && finishedTyping)
         {
-            mainScript.ResetStats();
+            new MainScript().ResetStats();
             SceneManager.LoadScene("IntroScene");
         }
 
