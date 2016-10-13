@@ -44,8 +44,8 @@ public class ConfigurationScript : MonoBehaviour {
     public static float baseDropZoneSpawnTime = 30;
     public static float enemySpawnTime = 2;
     public static float coinSpawnTime = 8;
-    public static float victimSpawnTime = 1;//10;
-    public static float dropZoneSpawnTime = 3;//30;
+    public static float victimSpawnTime = 10;
+    public static float dropZoneSpawnTime = 30;
     #endregion
 
     #region MonstersValue
