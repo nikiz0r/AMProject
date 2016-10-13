@@ -129,8 +129,7 @@ public class MainScript : MonoBehaviour {
         {
             SceneManager.LoadScene("GameScene");
             Time.timeScale = 1;
-            ConfigurationScript.score = 0;
-			ConfigurationScript.victimsCollected = 0;
+            ResetStats();
         }
 	}
 
@@ -169,5 +168,18 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
         InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
         InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
+    }
+
+    public void ResetStats()
+    {
+        ConfigurationScript.baseSpeed = ConfigurationScript.staticBaseSpeed;
+        ConfigurationScript.enemySpawnTime = ConfigurationScript.baseEnemySpawnTime;
+        ConfigurationScript.coinSpawnTime = ConfigurationScript.baseCoinSpawnTime;
+        ConfigurationScript.victimSpawnTime = ConfigurationScript.baseVictimSpawnTime;
+        ConfigurationScript.score = 0;
+        ConfigurationScript.victimsCollected = 0;
+        ConfigurationScript.playerSpeed = ConfigurationScript.playerBaseSpeed;
+        ConfigurationScript.jumpForce = ConfigurationScript.baseJumpForce;
+        ConfigurationScript.jumpBoost = ConfigurationScript.baseJumpBoost;
     }
 }

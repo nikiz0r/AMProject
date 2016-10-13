@@ -50,12 +50,16 @@ public class Player : MonoBehaviour {
 		//LIMITADOR DE BALAS NA TELA
 		bulletLimit = GameObject.FindGameObjectsWithTag("Bullet").Length + 1;
 
-        Jump();
-		Shoot();
-		Dash();
-		MeleeAttack();
-        if (grounded){
-            bubbles.Play();
+        if (Time.timeScale > 0)
+        {
+            Jump();
+            Shoot();
+            Dash();
+            //MeleeAttack();
+            if (grounded)
+            {
+                bubbles.Play();
+            }
         }
 	}
 
