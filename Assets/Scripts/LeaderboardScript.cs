@@ -64,7 +64,7 @@ public class LeaderboardScript : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && finishedTyping)
         {
-            ConfigurationScript.score = 0;
+            new MainScript().ResetStats();
             SceneManager.LoadScene("IntroScene");
         }
 
