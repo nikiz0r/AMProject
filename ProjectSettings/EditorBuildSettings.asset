@@ -12,6 +12,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RankScene.unity
   - enabled: 1
+    path: Assets/Scenes/ControlsScene.unity
+  - enabled: 1
     path: Assets/Scenes/BossFight.unity
   - enabled: 1
     path: Assets/Scenes/Credits.unity
