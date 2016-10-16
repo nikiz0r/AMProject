@@ -68,6 +68,8 @@ public class Player : MonoBehaviour {
         }
 
 		playerAn.SetBool ("shooting", isShoot);
+		playerAn.SetFloat ("SpeedY", playerRb.velocity.y);
+		playerAn.SetBool ("Grounded", grounded);
 	}
 
     void FixedUpdate(){
