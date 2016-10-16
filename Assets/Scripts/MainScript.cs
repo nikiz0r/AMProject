@@ -90,16 +90,21 @@ public class MainScript : MonoBehaviour {
     {
         GameObject selectedGO = coinPatternsList[Random.Range(0, coinPatternsList.Count)];
 
-        float yMinPosition = ConfigurationScript.minSpawnYPosition, yMaxPosition = ConfigurationScript.maxSpawnYPosition;
-        if(selectedGO.name == "CoinPattern2")
+        float yMinPosition = 0, yMaxPosition = 0;
+        if (selectedGO.name == "CoinPattern1")
+        {
+            yMinPosition = -2.7f;
+            yMaxPosition = 5f;
+        }
+        else if(selectedGO.name == "CoinPattern2")
         {
             yMinPosition = -3.5f;
-            yMaxPosition = 0;
+            yMaxPosition = 0.5f;
         }
         else if(selectedGO.name == "CoinPattern3")
         {
-            yMinPosition = -3.5f;
-            yMaxPosition = 1.2f;
+            yMinPosition = -3.6f;
+            yMaxPosition = 1.5f;
         }
 
         Instantiate(selectedGO, new Vector2(8f, Random.Range(yMinPosition, yMaxPosition)), selectedGO.transform.rotation);
