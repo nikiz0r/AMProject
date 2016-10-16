@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Floor : MonoBehaviour {
 
-	public float speed;
-
 	void Start () {
 		
 	}
@@ -14,10 +12,12 @@ public class Floor : MonoBehaviour {
 		if (transform.position.x < -18) {
 			transform.position = new Vector3 (0, transform.position.y, 0);
 		}
-		Move ();
+
+        if (Time.timeScale > 0)
+            Move ();
 	}
 
 	void Move(){
-		transform.Translate (speed, 0, 0);
+		transform.Translate (ConfigurationScript.backGroundSpeed, 0, 0);
 	}
 }

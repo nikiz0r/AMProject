@@ -12,7 +12,18 @@ public class Menu : MonoBehaviour {
 		SceneManager.LoadScene("RankScene");
 	}
 
-	public void MenuS(){
-		SceneManager.LoadScene("Menu");
+	public void ControlsBt(){
+		SceneManager.LoadScene("ControlsScene");
 	}
+
+    public void QuitBt()
+    {
+        Application.Quit();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F8))
+            SceneManager.LoadScene("Credits");
+    }
 }

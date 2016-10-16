@@ -10,8 +10,8 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public GameObject VictimGO, DropZoneGO;
 	public bool paused, dangerTimeVisibility, dangerFadeIn = false;
-    public Text score, dangerTime;
-    public Image dashFill;
+    public Text score, dangerTime, pauseTxt;
+    public Image dashFill, pauseImg;
     private Player playerScript;
 
     // Use this for initialization
@@ -34,6 +34,8 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("DifficultyUp", ConfigurationScript.difficultyUp, ConfigurationScript.difficultyUp);
 
         paused = false;
+		pauseImg.gameObject.SetActive (false);
+		pauseTxt.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -44,7 +46,7 @@ public class MainScript : MonoBehaviour {
 
         score.text = string.Format("Score: {0}", ConfigurationScript.score);
 
-        if (Time.time >= ConfigurationScript.DangerTime && !dangerTimeVisibility)
+        if (Time.timeSinceLevelLoad >= ConfigurationScript.DangerTime && !dangerTimeVisibility)
             TriggerDanger();
 
         // Player morreu
@@ -73,7 +75,7 @@ public class MainScript : MonoBehaviour {
 
     void EndGame()
     {
-        if (Time.time >= ConfigurationScript.EnterBossFight)
+        if (Time.timeSinceLevelLoad >= ConfigurationScript.EnterBossFight)
             SceneManager.LoadScene("BossFight");
     }
     void SpawnEnemies()
@@ -117,10 +119,14 @@ public class MainScript : MonoBehaviour {
 		if (Input.GetButtonDown("Pause") && paused == false) {
 			Time.timeScale = 0;
 			paused = true;
+			pauseImg.gameObject.SetActive (true);
+			pauseTxt.enabled = true;
 		}
 		else if (Input.GetButtonDown("Pause") && paused == true) {
 			Time.timeScale = 1;
 			paused = false;
+			pauseImg.gameObject.SetActive (false);
+			pauseTxt.enabled = false;
 		}
 	}
 
@@ -129,8 +135,7 @@ public class MainScript : MonoBehaviour {
         {
             SceneManager.LoadScene("GameScene");
             Time.timeScale = 1;
-            ConfigurationScript.score = 0;
-			ConfigurationScript.victimsCollected = 0;
+            ResetStats();
         }
 	}
 
@@ -169,5 +174,18 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
         InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
         InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
+    }
+
+    public void ResetStats()
+    {
+        ConfigurationScript.baseSpeed = ConfigurationScript.staticBaseSpeed;
+        ConfigurationScript.enemySpawnTime = ConfigurationScript.baseEnemySpawnTime;
+        ConfigurationScript.coinSpawnTime = ConfigurationScript.baseCoinSpawnTime;
+        ConfigurationScript.victimSpawnTime = ConfigurationScript.baseVictimSpawnTime;
+        ConfigurationScript.score = 0;
+        ConfigurationScript.victimsCollected = 0;
+        ConfigurationScript.playerSpeed = ConfigurationScript.playerBaseSpeed;
+        ConfigurationScript.jumpForce = ConfigurationScript.baseJumpForce;
+        ConfigurationScript.jumpBoost = ConfigurationScript.baseJumpBoost;
     }
 }
