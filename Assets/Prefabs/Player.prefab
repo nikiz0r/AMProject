@@ -14,6 +14,7 @@ GameObject:
   - 61: {fileID: 6195224}
   - 82: {fileID: 82000010430413928}
   - 82: {fileID: 82000012931289070}
+  - 95: {fileID: 95000013389062696}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.41, y: -3.09, z: 0}
+  m_LocalPosition: {x: -4.96, y: -3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -94,9 +95,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 95ad24782ff26d64b808445dd124e7eb, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.005087614}
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 1.95}
+  m_Size: {x: 0.65, y: 1.5072181}
 --- !u!114 &11478902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +121,7 @@ MonoBehaviour:
   bubbles: {fileID: 198000013920271524}
   shoalExists: 0
   shoal: {fileID: 1000013525957842, guid: be53bf27bca26e44abaad27e2c5d5e53, type: 2}
+  isShoot: 0
   dashCount: 3
 --- !u!212 &21267298
 SpriteRenderer:
@@ -150,7 +152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b33f1046a1dc3b642b059759d9e8d20a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 397d19d0dd2f342c0af049079514c4a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -489,6 +491,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95000013389062696
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 399d24b1c611e41ffbb22a1ea69522d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!198 &198000013920271524
 ParticleSystem:
   m_ObjectHideFlags: 1

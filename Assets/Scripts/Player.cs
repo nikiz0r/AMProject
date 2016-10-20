@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour {
 
@@ -24,9 +25,12 @@ public class Player : MonoBehaviour {
     public bool leftSide;
     public ParticleSystem bubbles;
 	private AudioSource jumpSound;
+	private Animator playerAn;
 
     public bool shoalExists = false;
     public GameObject shoal;
+
+	public bool isShoot;
 
     public float dashCount = 3;
 
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour {
 	}
 
     void Start () {
+		playerAn = GetComponent<Animator> ();
 		jumpSound = GetComponent<AudioSource> ();
         mainScript = (MainScript)FindObjectOfType(typeof(MainScript));
 		melee.SetActive (false);
@@ -61,6 +66,10 @@ public class Player : MonoBehaviour {
                 bubbles.Play();
             }
         }
+
+		playerAn.SetBool ("shooting", isShoot);
+		playerAn.SetFloat ("SpeedY", playerRb.velocity.y);
+		playerAn.SetBool ("Grounded", grounded);
 	}
 
     void FixedUpdate(){
@@ -114,10 +123,14 @@ public class Player : MonoBehaviour {
 				GameObject shoot = (GameObject)Instantiate(bullet, gun.position, transform.rotation);
 				if(leftSide == true){
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(ConfigurationScript.speedBulletL, 0);
+					isShoot = true;
+					StartCoroutine (ShootAnimation());
 				}
 				else if(leftSide == false && !mainScript.paused)
                 {
 					shoot.GetComponent<Rigidbody2D>().velocity = new Vector3(ConfigurationScript.speedBulletR, 0);
+					isShoot = true;
+					StartCoroutine (ShootAnimation());
 				}
 			}
 		}
@@ -163,5 +176,11 @@ public class Player : MonoBehaviour {
             dashCount = 3;
         }
     }
+
+	IEnumerator ShootAnimation()
+	{
+		yield return new WaitForSeconds(0.5f);
+		isShoot = false;
+	}
 }
 
